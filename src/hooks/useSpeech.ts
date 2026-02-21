@@ -43,13 +43,26 @@ export function useSpeech() {
       if (found) return found
     }
 
-    // 2. 匹配语言代码
+    // 2. 匹配语言代码（严格匹配 en-US, en-GB 等）
     const langVoice = voices.find(v =>
       v.lang.toLowerCase().startsWith(langCode)
     )
     if (langVoice) return langVoice
 
-    // 3. 返回默认声音
+    // 3. 英文额外尝试：查找任何包含 "english" 的声音
+    if (lang === 'en') {
+      const englishVoice = voices.find(v =>
+        v.name.toLowerCase().includes('english')
+      )
+      if (englishVoice) return englishVoice
+    }
+
+    // 4. 最后尝试：不要返回可能的中英错误声音
+    // 如果是英文且没找到，返回 null 让浏览器使用默认
+    if (lang === 'en') {
+      return null
+    }
+
     return voices[0]
   }, [currentProfile])
 
@@ -68,13 +81,16 @@ export function useSpeech() {
       const utterance = new SpeechSynthesisUtterance(text)
       const voice = getVoice(lang)
 
+      // 先设置语言（最重要，即使没有找到特定声音）
+      utterance.lang = lang === 'zh' ? 'zh-CN' : 'en-US'
+
+      // 如果找到特定声音，使用它
       if (voice) {
         utterance.voice = voice
       }
 
       utterance.rate = currentProfile.rate
       utterance.pitch = currentProfile.pitch
-      utterance.lang = lang === 'zh' ? 'zh-CN' : 'en-US'
       utterance.volume = 1
 
       utterance.onend = () => resolve()
