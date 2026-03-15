@@ -2,45 +2,37 @@ import { motion } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
 
 export function CategoryList() {
-  const { categories, currentCategory, selectCategory, progress } = useGameStore();
+  const { categories, currentCategory, selectCategory } = useGameStore();
 
   return (
-    <div className="bg-white rounded-[30px] border-2 border-primary-200 p-5 shadow-sm">
-      <h3 className="text-lg font-bold text-primary-600 mb-4">
-        选择主题
+    <div className="bg-white rounded-[30px] border-2 border-primary-200 p-4 shadow-sm">
+      <h3 className="text-base font-bold text-primary-600 mb-3 text-center">
+        选择主题 🎨
       </h3>
 
-      <div className="flex flex-col gap-4">
+      {/* 5行×2列网格布局 */}
+      <div className="grid grid-cols-2 gap-2">
         {categories.map((category, index) => {
-          const completedCount = category.words.filter((w) =>
-            progress.completedWords.includes(w.id)
-          ).length;
-          const totalCount = category.words.length;
           const isActive = currentCategory?.id === category.id;
 
           return (
             <motion.button
               key={category.id}
               onClick={() => selectCategory(category.id)}
-              className={`w-full h-[70px] rounded-2xl flex items-center gap-3 px-4 transition-all ${
+              className={`w-full h-[70px] rounded-2xl flex flex-col items-center justify-center gap-1 transition-all ${
                 isActive ? 'ring-2 ring-primary-400 ring-offset-2' : ''
               }`}
               style={{ backgroundColor: category.bgColor }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
             >
-              <span className="text-3xl">{category.icon}</span>
-              <div className="flex-1 text-left">
-                <p className="font-bold text-base" style={{ color: category.color }}>
-                  {category.name}
-                </p>
-                <p className="text-sm font-medium" style={{ color: category.color }}>
-                  {completedCount}/{totalCount} 单词
-                </p>
-              </div>
+              <span className="text-2xl">{category.icon}</span>
+              <p className="font-bold text-[11px]" style={{ color: category.color }}>
+                {category.name}
+              </p>
             </motion.button>
           );
         })}

@@ -19,11 +19,11 @@ export function GamePage() {
 
   return (
     <div className="min-h-screen bg-primary-50 flex flex-col">
-      {/* 背景装饰 */}
+      {/* 背景装饰 - 匹配设计稿位置 */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-primary-100 rounded-full opacity-30" />
-        <div className="absolute top-[600px] right-0 w-[300px] h-[300px] bg-pink-100 rounded-full opacity-30" />
-        <div className="absolute top-20 right-10 w-[200px] h-[200px] bg-green-100 rounded-full opacity-40" />
+        <div className="absolute top-0 left-[200px] w-[350px] h-[350px] bg-[#E0D4F7] rounded-full opacity-30" />
+        <div className="absolute top-[630px] right-[70px] w-[400px] h-[400px] bg-[#FBD5E8] rounded-full opacity-30" />
+        <div className="absolute top-[50px] right-[50px] w-[300px] h-[300px] bg-[#D4F7E0] rounded-full opacity-40" />
       </div>
 
       {/* 内容 */}
@@ -56,7 +56,7 @@ export function GamePage() {
 
           {/* 右侧分类栏 */}
           <motion.div
-            className="hidden lg:block w-[260px]"
+            className="hidden lg:block w-[280px]"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
           >

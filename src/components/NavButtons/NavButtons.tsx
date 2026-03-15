@@ -15,7 +15,7 @@ export function NavButtons() {
       <motion.button
         onClick={prevWord}
         disabled={isFirstWord}
-        className={`w-[100px] h-[100px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md ${
+        className={`w-[100px] h-[120px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md ${
           isFirstWord
             ? 'bg-gray-100 opacity-50 cursor-not-allowed'
             : 'bg-gray-100 hover:bg-gray-200'
@@ -25,23 +25,25 @@ export function NavButtons() {
       >
         <span className="text-4xl">⬅️</span>
         <span className="text-gray-500 font-semibold text-sm">上一个</span>
+        <span className="text-gray-400 font-medium text-xs">←</span>
       </motion.button>
 
       {/* 主页按钮 */}
       <motion.button
         onClick={goToHome}
-        className="w-[120px] h-[100px] bg-primary-600 rounded-3xl flex flex-col items-center justify-center gap-1 shadow-lg"
+        className="w-[120px] h-[120px] bg-primary-600 rounded-3xl flex flex-col items-center justify-center gap-1 shadow-lg"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         <span className="text-4xl">🏠</span>
         <span className="text-white font-semibold text-sm">主页</span>
+        <span className="text-white/80 font-medium text-xs">Home</span>
       </motion.button>
 
       {/* 下一个按钮 */}
       <motion.button
         onClick={nextWord}
-        className={`w-[100px] h-[100px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md ${
+        className={`w-[100px] h-[120px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md ${
           isLastWord ? 'bg-pink-500' : 'bg-success'
         }`}
         whileHover={{ scale: 1.05 }}
@@ -51,6 +53,7 @@ export function NavButtons() {
         <span className="text-white font-semibold text-sm">
           {isLastWord ? '完成' : '下一个'}
         </span>
+        <span className="text-white/80 font-medium text-xs">→</span>
       </motion.button>
     </div>
   );

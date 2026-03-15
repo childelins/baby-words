@@ -18,13 +18,13 @@ export function WordCard() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.3 }}
-          className="w-[400px] bg-white rounded-[40px] border-[3px] border-primary-200 p-8 shadow-lg"
+          className="w-[440px] bg-white rounded-[40px] border-[3px] border-primary-200 p-8 shadow-lg"
         >
           {/* 装饰条 */}
           <div className="w-[280px] h-2 bg-pink rounded-full mx-auto mb-5" />
 
           {/* 图片区域 */}
-          <div className="w-[280px] h-[220px] bg-primary-50 rounded-[40px] border-[3px] border-primary-200 mx-auto flex items-center justify-center relative overflow-hidden">
+          <div className="w-[320px] h-[260px] bg-primary-50 rounded-[40px] border-[3px] border-primary-200 mx-auto flex items-center justify-center relative overflow-hidden">
             <span className="text-[120px]">{word.emoji}</span>
             {/* 装饰 */}
             <span className="absolute top-2 right-3 text-2xl">✨</span>
@@ -34,10 +34,10 @@ export function WordCard() {
 
           {/* 单词显示 */}
           <div className="mt-6 text-center">
-            <h2 className="text-primary-600 text-5xl font-extrabold mb-2">
+            <h2 className="text-primary-600 text-[56px] font-extrabold mb-2">
               {word.english}
             </h2>
-            <p className="text-gray-500 text-2xl font-semibold mb-1">
+            <p className="text-gray-500 text-[28px] font-semibold mb-1">
               {word.chinese}
             </p>
             <p className="text-gray-400 text-base">
@@ -80,6 +80,14 @@ export function WordCard() {
             中文
           </span>
         </div>
+      </div>
+
+      {/* Space 键提示 */}
+      <div className="flex items-center gap-2">
+        <div className="w-20 h-8 bg-gray-100 rounded-lg border border-gray-300 flex items-center justify-center">
+          <span className="text-gray-600 font-semibold text-xs">Space</span>
+        </div>
+        <span className="text-gray-400 font-medium text-sm">重复播放发音</span>
       </div>
     </div>
   );
