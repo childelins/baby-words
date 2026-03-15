@@ -1,4 +1,24 @@
-export type PlayLang = 'en' | 'zh';
+export interface Word {
+  id: string;
+  emoji: string;
+  english: string;
+  chinese: string;
+  phonetic: string;
+  categoryId: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+  words: Word[];
+}
+
+export interface GameData {
+  categories: Category[];
+}
 
 export interface DailyProgress {
   date: string;
@@ -13,3 +33,5 @@ export interface Progress {
   completedWords: string[];
   dailyProgress: DailyProgress;
 }
+
+export type PlayLang = 'en' | 'zh';
