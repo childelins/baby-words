@@ -22,6 +22,9 @@ interface GameState {
   // 完成弹窗
   showCompleteModal: boolean;
 
+  // 卡片切换方向
+  slideDirection: 'left' | 'right' | null;
+
   // Actions
   selectCategory: (categoryId: string) => void;
   goToHome: () => void;
@@ -43,6 +46,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   playingLang: null,
   progress: loadProgress(),
   showCompleteModal: false,
+  slideDirection: null,
 
   selectCategory: (categoryId: string) => {
     const category = get().categories.find((c) => c.id === categoryId);
@@ -51,6 +55,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         currentCategory: category,
         currentWordIndex: 0,
         showCompleteModal: false,
+        slideDirection: null,
       });
     }
   },
@@ -63,6 +68,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       isPlaying: false,
       playingLang: null,
       showCompleteModal: false,
+      slideDirection: null,
     });
   },
 
@@ -74,7 +80,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     markWordComplete();
 
     if (currentWordIndex < currentCategory.words.length - 1) {
-      set({ currentWordIndex: currentWordIndex + 1 });
+      set({ currentWordIndex: currentWordIndex + 1, slideDirection: 'left' });
     } else {
       // 已经是最后一个单词，显示完成弹窗
       set({ showCompleteModal: true });
@@ -85,7 +91,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     const { currentCategory, currentWordIndex } = get();
     if (!currentCategory || currentWordIndex <= 0) return;
 
-    set({ currentWordIndex: currentWordIndex - 1 });
+    set({ currentWordIndex: currentWordIndex - 1, slideDirection: 'right' });
   },
 
   playAudio: async (lang: PlayLang) => {

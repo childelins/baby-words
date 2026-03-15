@@ -26,7 +26,7 @@ function SoundWave({ isActive, color }: { isActive: boolean; color: string }) {
 }
 
 export function WordCard() {
-  const { currentCategory, currentWordIndex, isPlaying, playingLang } = useGameStore();
+  const { currentCategory, currentWordIndex, isPlaying, playingLang, slideDirection } = useGameStore();
 
   if (!currentCategory) return null;
 
@@ -65,10 +65,18 @@ export function WordCard() {
       <AnimatePresence mode="wait">
         <motion.div
           key={word.id}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.3 }}
+          initial={{
+            opacity: 0,
+            x: slideDirection === 'left' ? 100 : slideDirection === 'right' ? -100 : 0,
+            y: slideDirection ? 0 : 50
+          }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          exit={{
+            opacity: 0,
+            x: slideDirection === 'left' ? -100 : slideDirection === 'right' ? 100 : 0,
+            y: 0
+          }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
           className="w-[440px] bg-white rounded-[40px] border-[3px] border-primary-200 p-8 shadow-lg"
         >
           {/* 图片区域 */}
