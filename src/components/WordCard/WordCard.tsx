@@ -1,6 +1,30 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
 
+// 声波动画组件
+function SoundWave({ isActive, color }: { isActive: boolean; color: string }) {
+  return (
+    <div className="flex items-center gap-0.5 h-4">
+      {[0, 1, 2].map((i) => (
+        <motion.div
+          key={i}
+          className={`w-1 rounded-full ${color}`}
+          animate={isActive ? {
+            height: [8, 16, 8],
+          } : { height: 8 }}
+          transition={{
+            duration: 0.4,
+            repeat: isActive ? Infinity : 0,
+            delay: i * 0.1,
+            ease: 'easeInOut',
+          }}
+          style={{ height: 8 }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function WordCard() {
   const { currentCategory, currentWordIndex, isPlaying, playingLang } = useGameStore();
 
@@ -10,6 +34,10 @@ export function WordCard() {
   const totalWords = currentCategory.words.length;
   const currentNumber = currentWordIndex + 1;
   const progressPercentage = ((currentWordIndex + 1) / totalWords) * 100;
+
+  // 播放状态
+  const isPlayingEn = isPlaying && playingLang === 'en';
+  const isPlayingZh = isPlaying && playingLang === 'zh';
 
   return (
     <div className="flex flex-col items-center gap-6">
@@ -69,37 +97,51 @@ export function WordCard() {
 
       {/* 播放指示器 */}
       <div className="flex items-center gap-3">
-        <div
+        <motion.div
           className={`flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors ${
-            isPlaying && playingLang === 'en'
-              ? 'bg-primary-600'
-              : 'bg-primary-100'
+            isPlayingEn ? 'bg-primary-600' : 'bg-primary-100'
           }`}
+          animate={isPlayingEn ? { scale: [1, 1.05, 1] } : {}}
+          transition={{
+            duration: 0.6,
+            repeat: isPlayingEn ? Infinity : 0,
+            ease: 'easeInOut',
+          }}
         >
-          <span className="text-lg">🔊</span>
+          <SoundWave
+            isActive={isPlayingEn}
+            color={isPlayingEn ? 'bg-white' : 'bg-primary-600'}
+          />
           <span className={`text-sm font-semibold ${
-            isPlaying && playingLang === 'en' ? 'text-white' : 'text-primary-600'
+            isPlayingEn ? 'text-white' : 'text-primary-600'
           }`}>
             English
           </span>
-        </div>
+        </motion.div>
 
         <span className="text-primary-600 text-lg">→</span>
 
-        <div
+        <motion.div
           className={`flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors ${
-            isPlaying && playingLang === 'zh'
-              ? 'bg-pink-500'
-              : 'bg-pink-100'
+            isPlayingZh ? 'bg-pink-500' : 'bg-pink-100'
           }`}
+          animate={isPlayingZh ? { scale: [1, 1.05, 1] } : {}}
+          transition={{
+            duration: 0.6,
+            repeat: isPlayingZh ? Infinity : 0,
+            ease: 'easeInOut',
+          }}
         >
-          <span className="text-lg">🔊</span>
+          <SoundWave
+            isActive={isPlayingZh}
+            color={isPlayingZh ? 'bg-white' : 'bg-pink-600'}
+          />
           <span className={`text-sm font-semibold ${
-            isPlaying && playingLang === 'zh' ? 'text-white' : 'text-pink-600'
+            isPlayingZh ? 'text-white' : 'text-pink-600'
           }`}>
             中文
           </span>
-        </div>
+        </motion.div>
       </div>
 
       {/* Space 键提示 */}
