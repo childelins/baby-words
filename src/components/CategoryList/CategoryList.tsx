@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
+import { useRipple } from '../../hooks';
 
 export function CategoryList() {
   const { categories, currentCategory, selectCategory, progress } = useGameStore();
+  const { createRipple, getRipples } = useRipple();
 
   // 计算单个分类的进度
   const getCategoryProgress = (categoryId: string) => {
@@ -33,7 +35,10 @@ export function CategoryList() {
           return (
             <motion.button
               key={category.id}
-              onClick={() => selectCategory(category.id)}
+              onClick={(e) => {
+                createRipple(e, category.id);
+                selectCategory(category.id);
+              }}
               className={`w-full h-[70px] rounded-2xl flex flex-col items-center justify-center gap-1 transition-all relative overflow-hidden ${
                 isActive ? 'ring-2 ring-primary-400 ring-offset-2' : ''
               }`}
@@ -44,6 +49,22 @@ export function CategoryList() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
             >
+              {/* 涟漪效果 */}
+              {getRipples(category.id).map((ripple) => (
+                <motion.span
+                  key={ripple.id}
+                  className="absolute rounded-full bg-white/40 pointer-events-none"
+                  style={{
+                    left: ripple.x,
+                    top: ripple.y,
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                  initial={{ width: 0, height: 0, opacity: 1 }}
+                  animate={{ width: 200, height: 200, opacity: 0 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                />
+              ))}
+
               <span className="text-2xl">{category.icon}</span>
               <p className="font-bold text-[11px]" style={{ color: category.color }}>
                 {category.name}
