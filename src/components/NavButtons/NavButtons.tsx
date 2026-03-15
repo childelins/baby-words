@@ -37,7 +37,7 @@ export function NavButtons() {
       >
         <span className="text-4xl">🏠</span>
         <span className="text-white font-semibold text-sm">主页</span>
-        <span className="text-white/80 font-medium text-xs">Home</span>
+        <span className="text-white/80 font-medium text-xs">Esc</span>
       </motion.button>
 
       {/* 下一个按钮 */}

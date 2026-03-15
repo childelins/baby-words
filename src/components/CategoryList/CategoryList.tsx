@@ -2,7 +2,21 @@ import { motion } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
 
 export function CategoryList() {
-  const { categories, currentCategory, selectCategory } = useGameStore();
+  const { categories, currentCategory, selectCategory, progress } = useGameStore();
+
+  // 计算单个分类的进度
+  const getCategoryProgress = (categoryId: string) => {
+    const category = categories.find(c => c.id === categoryId);
+    if (!category) return { completed: 0, total: 0, percentage: 0 };
+
+    const completed = category.words.filter(
+      word => progress.completedWords.includes(word.id)
+    ).length;
+    const total = category.words.length;
+    const percentage = total > 0 ? Math.min((completed / total) * 100, 100) : 0;
+
+    return { completed, total, percentage };
+  };
 
   return (
     <div className="bg-white rounded-[30px] border-2 border-primary-200 p-4 shadow-sm">
@@ -14,12 +28,13 @@ export function CategoryList() {
       <div className="grid grid-cols-2 gap-2">
         {categories.map((category, index) => {
           const isActive = currentCategory?.id === category.id;
+          const { completed, total, percentage } = getCategoryProgress(category.id);
 
           return (
             <motion.button
               key={category.id}
               onClick={() => selectCategory(category.id)}
-              className={`w-full h-[70px] rounded-2xl flex flex-col items-center justify-center gap-1 transition-all ${
+              className={`w-full h-[70px] rounded-2xl flex flex-col items-center justify-center gap-1 transition-all relative overflow-hidden ${
                 isActive ? 'ring-2 ring-primary-400 ring-offset-2' : ''
               }`}
               style={{ backgroundColor: category.bgColor }}
@@ -33,6 +48,24 @@ export function CategoryList() {
               <p className="font-bold text-[11px]" style={{ color: category.color }}>
                 {category.name}
               </p>
+
+              {/* 进度条 - 只有有进度时才显示 */}
+              {percentage > 0 && (
+                <div className="absolute bottom-0 left-0 right-0 h-1">
+                  <motion.div
+                    className="h-full"
+                    style={{ backgroundColor: category.color }}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${percentage}%` }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  />
+                </div>
+              )}
+
+              {/* 进度数字（完成时显示星星） */}
+              {completed === total && total > 0 && (
+                <span className="absolute top-1 right-1 text-xs">⭐</span>
+              )}
             </motion.button>
           );
         })}

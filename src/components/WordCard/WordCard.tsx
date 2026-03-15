@@ -7,9 +7,32 @@ export function WordCard() {
   if (!currentCategory) return null;
 
   const word = currentCategory.words[currentWordIndex];
+  const totalWords = currentCategory.words.length;
+  const currentNumber = currentWordIndex + 1;
+  const progressPercentage = ((currentWordIndex + 1) / totalWords) * 100;
 
   return (
     <div className="flex flex-col items-center gap-6">
+      {/* 进度条 */}
+      <div className="w-[440px]">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-primary-600 font-bold text-sm">
+            {currentCategory.name}
+          </span>
+          <span className="text-primary-600 font-bold text-sm">
+            {currentNumber} / {totalWords}
+          </span>
+        </div>
+        <div className="h-2 bg-primary-100 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-primary-500 rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: `${progressPercentage}%` }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          />
+        </div>
+      </div>
+
       {/* 主卡片 */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -20,9 +43,6 @@ export function WordCard() {
           transition={{ duration: 0.3 }}
           className="w-[440px] bg-white rounded-[40px] border-[3px] border-primary-200 p-8 shadow-lg"
         >
-          {/* 装饰条 */}
-          <div className="w-[280px] h-2 bg-pink rounded-full mx-auto mb-5" />
-
           {/* 图片区域 */}
           <div className="w-[320px] h-[260px] bg-primary-50 rounded-[40px] border-[3px] border-primary-200 mx-auto flex items-center justify-center relative overflow-hidden">
             <span className="text-[120px]">{word.emoji}</span>

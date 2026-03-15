@@ -9,7 +9,9 @@ export function useAutoPlay() {
     isPlaying,
     nextWord,
     prevWord,
-    goToHome
+    goToHome,
+    showCompleteModal,
+    closeCompleteModal
   } = useGameStore();
   const hasPlayedRef = useRef(false);
 
@@ -31,6 +33,18 @@ export function useAutoPlay() {
 
   // 键盘事件处理
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    // Esc 键：关闭弹窗或返回主页
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      if (showCompleteModal) {
+        closeCompleteModal();
+        goToHome();
+      } else if (currentCategory) {
+        goToHome();
+      }
+      return;
+    }
+
     if (!currentCategory) return;
 
     switch (e.key) {
@@ -51,13 +65,8 @@ export function useAutoPlay() {
         e.preventDefault();
         nextWord();
         break;
-      case 'Home':
-        // Home 键：返回主页
-        e.preventDefault();
-        goToHome();
-        break;
     }
-  }, [currentCategory, isPlaying, playAutoSequence, prevWord, nextWord, goToHome]);
+  }, [currentCategory, isPlaying, playAutoSequence, prevWord, nextWord, goToHome, showCompleteModal, closeCompleteModal]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
