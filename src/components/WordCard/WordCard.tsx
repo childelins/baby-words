@@ -1,6 +1,22 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
 
+// 卡片内容依次出现动画变体
+const cardContentVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 // 声波动画组件
 function SoundWave({ isActive, color }: { isActive: boolean; color: string }) {
   return (
@@ -79,27 +95,52 @@ export function WordCard() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className="w-[440px] bg-white rounded-[40px] border-[3px] border-primary-200 p-8 shadow-lg"
         >
-          {/* 图片区域 */}
-          <div className="w-[320px] h-[260px] bg-primary-50 rounded-[40px] border-[3px] border-primary-200 mx-auto flex items-center justify-center relative overflow-hidden">
-            <span className="text-[120px]">{word.emoji}</span>
-            {/* 装饰 */}
-            <span className="absolute top-2 right-3 text-2xl">✨</span>
-            <span className="absolute bottom-3 left-2 text-xl">⭐</span>
-            <span className="absolute top-4 left-4 text-lg">💫</span>
-          </div>
+          <motion.div
+            variants={cardContentVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* 图片区域 */}
+            <motion.div
+              variants={itemVariants}
+              className="w-[320px] h-[260px] bg-primary-50 rounded-[40px] border-[3px] border-primary-200 mx-auto flex items-center justify-center relative overflow-hidden"
+            >
+              <motion.span
+                className="text-[120px]"
+                initial={{ scale: 0.5 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.15, type: 'spring', damping: 10 }}
+              >
+                {word.emoji}
+              </motion.span>
+              {/* 装饰 */}
+              <span className="absolute top-2 right-3 text-2xl">✨</span>
+              <span className="absolute bottom-3 left-2 text-xl">⭐</span>
+              <span className="absolute top-4 left-4 text-lg">💫</span>
+            </motion.div>
 
-          {/* 单词显示 */}
-          <div className="mt-6 text-center">
-            <h2 className="text-primary-600 text-[56px] font-extrabold mb-2">
-              {word.english}
-            </h2>
-            <p className="text-gray-500 text-[28px] font-semibold mb-1">
-              {word.chinese}
-            </p>
-            <p className="text-gray-400 text-base">
-              {word.phonetic}
-            </p>
-          </div>
+            {/* 单词显示 */}
+            <motion.div variants={itemVariants} className="mt-6 text-center">
+              <motion.h2
+                variants={itemVariants}
+                className="text-primary-600 text-[56px] font-extrabold mb-2"
+              >
+                {word.english}
+              </motion.h2>
+              <motion.p
+                variants={itemVariants}
+                className="text-gray-500 text-[28px] font-semibold mb-1"
+              >
+                {word.chinese}
+              </motion.p>
+              <motion.p
+                variants={itemVariants}
+                className="text-gray-400 text-base"
+              >
+                {word.phonetic}
+              </motion.p>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </AnimatePresence>
 
