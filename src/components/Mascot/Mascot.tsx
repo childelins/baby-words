@@ -27,23 +27,55 @@ export function Mascot() {
       {/* 吉祥物身体 */}
       <motion.div
         className="w-40 h-40 bg-primary-600 rounded-full flex items-center justify-center shadow-lg"
-        animate={{
-          rotate: isPlaying ? [0, -5, 5, -5, 5, 0] : 0,
-        }}
-        transition={{
-          duration: 0.5,
-          repeat: isPlaying ? Infinity : 0,
-        }}
+        animate={
+          isPlaying
+            ? {
+                rotate: playingLang === 'en' ? [0, -5, 5, -5, 5, 0] : [0, 5, -5, 5, -5, 0],
+              }
+            : {
+                scale: [1, 1.02, 1],
+                y: [0, -2, 0],
+              }
+        }
+        transition={
+          isPlaying
+            ? {
+                duration: 0.5,
+                repeat: Infinity,
+              }
+            : {
+                duration: 2.5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }
+        }
       >
-        <span className="text-8xl">😺</span>
+        <motion.span
+          className="text-8xl"
+          animate={isPlaying ? {} : {
+            y: [0, -3, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        >
+          😺
+        </motion.span>
       </motion.div>
 
       {/* 对话气泡 */}
-      <div className="bg-white rounded-2xl border-2 border-primary-200 px-4 py-3 shadow-sm max-w-[180px]">
+      <motion.div
+        className="bg-white rounded-2xl border-2 border-primary-200 px-4 py-3 shadow-sm max-w-[180px]"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        key={getMessage()}
+      >
         <p className="text-primary-600 font-semibold text-center text-base">
           {getMessage()}
         </p>
-      </div>
+      </motion.div>
 
       {/* 名字 */}
       <span className="text-primary-600 font-bold text-sm">小紫猫</span>
