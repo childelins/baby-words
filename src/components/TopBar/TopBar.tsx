@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
 
 export function TopBar() {
@@ -8,12 +9,26 @@ export function TopBar() {
       <div className="bg-white rounded-[30px] border-2 border-primary-200 px-6 py-3 flex items-center justify-between shadow-sm">
         {/* 星星数量 */}
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
+          <motion.div
+            className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center"
+            animate={{ rotate: [0, -10, 10, -10, 10, 0] }}
+            transition={{ duration: 0.4, repeat: 0 }}
+            key={progress.stars}
+          >
             <span className="text-2xl">⭐</span>
-          </div>
-          <span className="text-2xl font-extrabold text-primary-600">
-            {progress.stars}
-          </span>
+          </motion.div>
+          <AnimatePresence mode="popLayout">
+            <motion.span
+              key={progress.stars}
+              initial={{ y: 20, opacity: 0, scale: 0.5 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: -20, opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="text-2xl font-extrabold text-primary-600"
+            >
+              {progress.stars}
+            </motion.span>
+          </AnimatePresence>
         </div>
 
         {/* 标题 */}
