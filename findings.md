@@ -118,3 +118,87 @@ interface Progress {
 ### 当前键盘事件位置
 - 键盘事件监听在 `src/hooks/useAutoPlay.ts`
 - 使用 `useEffect` 添加/移除事件监听
+
+---
+
+## 动画实现发现 (2026-03-15)
+
+### Framer Motion 最佳实践
+
+#### AnimatePresence 使用
+- 使用 `mode="popLayout"` 实现数字变化动画
+- 使用 `mode="wait"` 实现卡片切换动画
+- 必须为子元素设置 `key` 属性触发动画
+
+#### 动画性能优化
+- 使用 `transform` 属性（x, y, scale, rotate）而非 layout 属性
+- 避免动画 `width`/`height`，使用 `scale` 替代
+- 使用 `easeOut` 缓动函数使动画更自然
+
+#### 条件动画
+```typescript
+animate={isPlaying ? { scale: [1, 1.05, 1] } : {}}
+transition={{
+  duration: 0.6,
+  repeat: isPlaying ? Infinity : 0,
+  ease: 'easeInOut',
+}}
+```
+
+### 涟漪效果实现
+
+```typescript
+// useRipple Hook 核心逻辑
+const createRipple = (event: React.MouseEvent<HTMLButtonElement>, key: string) => {
+  const rect = button.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  setRipples(prev => [...prev, { x, y, id: Date.now(), key }]);
+  setTimeout(() => removeRipple(id), 600);
+};
+```
+
+**注意事项**:
+- 使用 `useRef` 保存 timeout IDs，组件卸载时清理
+- 使用 `key` 区分不同元素的涟漪，避免跨元素显示
+
+### 卡片方向感知动画
+
+```typescript
+// store 中添加 slideDirection 状态
+slideDirection: 'left' | 'right' | null
+
+// 切换时设置方向
+nextWord: set({ slideDirection: 'left' })
+prevWord: set({ slideDirection: 'right' })
+
+// 动画中使用
+initial={{ x: direction === 'left' ? 100 : -100 }}
+exit={{ x: direction === 'left' ? -100 : 100 }}
+```
+
+### Stagger 动画模式
+
+```typescript
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+```
+
+### 动画时长建议
+
+| 类型 | 时长 | 说明 |
+|------|------|------|
+| 即时反馈 | 100-200ms | 按钮点击、hover |
+| 状态变化 | 200-400ms | 卡片切换、弹窗出现 |
+| 循环动画 | 2-3s | 呼吸、摇晃等 |
+| 声波动画 | 400-600ms | 播放指示器 |

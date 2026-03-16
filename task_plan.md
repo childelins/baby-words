@@ -73,10 +73,38 @@
 
 ---
 
-## 阶段七：待优化项
+## 阶段七：动画效果增强 ✅ 已完成
+
+### 任务描述
+为宝宝单词乐园添加系统性动画效果，提升交互体验和趣味性。
+
+### 已实现
+- [x] **反馈动画**
+  - TopBar 星星数字变化弹入动画
+  - 播放指示器脉冲和声波动画
+  - 分类卡片点击涟漪效果
+  - CompleteModal 弹窗依次出现动画
+- [x] **卡片动画**
+  - WordCard 方向感知切换动画（上一个/下一个）
+  - WordCard 内容依次出现动画（stagger）
+- [x] **吉祥物动画**
+  - Mascot 待机呼吸效果
+  - Mascot 播放时点头/摇头
+
+### 提交记录
+- `0fe7ec6` feat(animation): TopBar 星星数字变化动画
+- `a7943aa` feat(animation): 播放指示器脉冲和声波动画
+- `6711fc8` feat(animation): 分类卡片点击涟漪效果
+- `2a1adc5` feat(ui): 增强 CompleteModal 弹窗动画效果
+- `3da8b04` feat(animation): WordCard 方向感知切换动画
+- `bda9615` feat(animation): WordCard 内容依次出现动画
+- `4c50fa3` feat(ui): 添加 Mascot 待机呼吸动画
+
+---
+
+## 阶段八：待优化项
 
 - [ ] 响应式适配（平板/手机端）
-- [ ] 动画效果优化
 - [ ] PWA 图标资源
 - [ ] 离线支持测试
 

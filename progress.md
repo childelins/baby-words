@@ -1,5 +1,54 @@
 # 会话进度日志
 
+## 2026-03-15 会话（动画效果增强）
+
+### 任务背景
+完善基础体验，添加系统性动画效果，提升交互体验和趣味性。
+
+### 设计决策
+- 动画实现顺序：反馈动画 → 卡片动画 → 吉祥物动画
+- 技术方案：使用 framer-motion（已安装）
+- 动画时长控制：100-400ms，避免让幼儿等待
+
+### 已完成任务
+
+#### Chunk 1: 反馈动画
+- [x] Task 1: TopBar 星星动画 - 数字变化弹入动画、星星图标摇晃
+- [x] Task 2: 播放指示器脉冲动画 - SoundWave 声波组件、脉冲缩放
+- [x] Task 3: CategoryList 涟漪效果 - useRipple Hook、点击涟漪扩散
+- [x] Task 4: CompleteModal 增强动画 - 内容依次出现、按钮滑入
+
+#### Chunk 2: 卡片动画
+- [x] Task 5: WordCard 方向感知切换 - slideDirection 状态、左右滑动动画
+- [x] Task 6: WordCard 内容依次出现 - staggerChildren、emoji 弹性动画
+
+#### Chunk 3: 吉祥物动画
+- [x] Task 7: Mascot 待机呼吸动画 - scale + y 呼吸效果、播放时点头/摇头
+
+### 文件变更
+
+| 文件 | 变更 |
+|------|------|
+| `src/components/TopBar/TopBar.tsx` | 星星数字变化动画 |
+| `src/components/WordCard/WordCard.tsx` | 播放指示器、方向切换、内容依次出现 |
+| `src/components/CategoryList/CategoryList.tsx` | 涟漪效果 |
+| `src/components/CompleteModal/CompleteModal.tsx` | 弹窗增强动画 |
+| `src/components/Mascot/Mascot.tsx` | 呼吸和配合动画 |
+| `src/hooks/useRipple.ts` | 新建：涟漪效果 Hook |
+| `src/hooks/index.ts` | 新建：Hooks 导出文件 |
+| `src/store/useGameStore.ts` | 添加 slideDirection 状态 |
+
+### 代码质量修复
+- Task 2: 提取 isPlayingEn/isPlayingZh 变量，解决 DRY 问题
+- Task 3: 添加 timeout 清理，修复内存泄漏风险
+
+### 当前状态
+- 所有动画任务已完成
+- 构建成功：356.76 KiB
+- 工作区干净
+
+---
+
 ## 2026-03-15 会话（续）
 
 ### 当前任务：进度条与键盘优化
