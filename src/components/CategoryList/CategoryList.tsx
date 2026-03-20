@@ -26,8 +26,8 @@ export function CategoryList() {
         选择主题 🎨
       </h3>
 
-      {/* 5行×2列网格布局 */}
-      <div className="grid grid-cols-2 gap-2">
+      {/* 4×3 网格布局 */}
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
         {categories.map((category, index) => {
           const isActive = currentCategory?.id === category.id;
           const { completed, total, percentage } = getCategoryProgress(category.id);

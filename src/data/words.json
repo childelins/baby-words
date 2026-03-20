@@ -16,24 +16,51 @@
         { "id": "lion", "emoji": "🦁", "english": "Lion", "chinese": "狮子", "phonetic": "[ˈlaɪən]", "categoryId": "animals" },
         { "id": "bear", "emoji": "🐻", "english": "Bear", "chinese": "熊", "phonetic": "[beə]", "categoryId": "animals" },
         { "id": "monkey", "emoji": "🐵", "english": "Monkey", "chinese": "猴子", "phonetic": "[ˈmʌŋki]", "categoryId": "animals" },
-        { "id": "pig", "emoji": "🐷", "english": "Pig", "chinese": "猪", "phonetic": "[pɪɡ]", "categoryId": "animals" }
+        { "id": "pig", "emoji": "🐷", "english": "Pig", "chinese": "猪", "phonetic": "[pɪɡ]", "categoryId": "animals" },
+        { "id": "duck", "emoji": "🦆", "english": "Duck", "chinese": "鸭子", "phonetic": "[dʌk]", "categoryId": "animals" },
+        { "id": "chicken", "emoji": "🐔", "english": "Chicken", "chinese": "小鸡", "phonetic": "[ˈtʃɪkɪn]", "categoryId": "animals" },
+        { "id": "cow", "emoji": "🐄", "english": "Cow", "chinese": "牛", "phonetic": "[kaʊ]", "categoryId": "animals" },
+        { "id": "sheep", "emoji": "🐑", "english": "Sheep", "chinese": "绵羊", "phonetic": "[ʃiːp]", "categoryId": "animals" },
+        { "id": "horse", "emoji": "🐴", "english": "Horse", "chinese": "马", "phonetic": "[hɔːs]", "categoryId": "animals" },
+        { "id": "frog", "emoji": "🐸", "english": "Frog", "chinese": "青蛙", "phonetic": "[frɒɡ]", "categoryId": "animals" }
       ]
     },
     {
       "id": "food",
       "name": "美味食物",
-      "icon": "🍎",
+      "icon": "🍔",
       "color": "#EA580C",
       "bgColor": "#FFF7ED",
       "words": [
-        { "id": "apple", "emoji": "🍎", "english": "Apple", "chinese": "苹果", "phonetic": "[ˈæpl]", "categoryId": "food" },
-        { "id": "banana", "emoji": "🍌", "english": "Banana", "chinese": "香蕉", "phonetic": "[bəˈnɑːnə]", "categoryId": "food" },
-        { "id": "orange", "emoji": "🍊", "english": "Orange", "chinese": "橙子", "phonetic": "[ˈɒrɪndʒ]", "categoryId": "food" },
-        { "id": "grape", "emoji": "🍇", "english": "Grape", "chinese": "葡萄", "phonetic": "[ɡreɪp]", "categoryId": "food" },
         { "id": "cake", "emoji": "🎂", "english": "Cake", "chinese": "蛋糕", "phonetic": "[keɪk]", "categoryId": "food" },
         { "id": "bread", "emoji": "🍞", "english": "Bread", "chinese": "面包", "phonetic": "[bred]", "categoryId": "food" },
         { "id": "milk", "emoji": "🥛", "english": "Milk", "chinese": "牛奶", "phonetic": "[mɪlk]", "categoryId": "food" },
-        { "id": "egg", "emoji": "🥚", "english": "Egg", "chinese": "鸡蛋", "phonetic": "[eɡ]", "categoryId": "food" }
+        { "id": "egg", "emoji": "🥚", "english": "Egg", "chinese": "鸡蛋", "phonetic": "[eɡ]", "categoryId": "food" },
+        { "id": "cookie", "emoji": "🍪", "english": "Cookie", "chinese": "饼干", "phonetic": "[ˈkʊki]", "categoryId": "food" },
+        { "id": "cheese", "emoji": "🧀", "english": "Cheese", "chinese": "奶酪", "phonetic": "[tʃiːz]", "categoryId": "food" },
+        { "id": "rice", "emoji": "🍚", "english": "Rice", "chinese": "米饭", "phonetic": "[raɪs]", "categoryId": "food" },
+        { "id": "noodles", "emoji": "🍝", "english": "Noodles", "chinese": "面条", "phonetic": "[ˈnuːdlz]", "categoryId": "food" }
+      ]
+    },
+    {
+      "id": "fruits",
+      "name": "美味水果",
+      "icon": "🍇",
+      "color": "#C026D3",
+      "bgColor": "#FAE8FF",
+      "words": [
+        { "id": "apple", "emoji": "🍎", "english": "Apple", "chinese": "苹果", "phonetic": "[ˈæpl]", "categoryId": "fruits" },
+        { "id": "banana", "emoji": "🍌", "english": "Banana", "chinese": "香蕉", "phonetic": "[bəˈnɑːnə]", "categoryId": "fruits" },
+        { "id": "orange", "emoji": "🍊", "english": "Orange", "chinese": "橙子", "phonetic": "[ˈɒrɪndʒ]", "categoryId": "fruits" },
+        { "id": "grape", "emoji": "🍇", "english": "Grape", "chinese": "葡萄", "phonetic": "[ɡreɪp]", "categoryId": "fruits" },
+        { "id": "peach", "emoji": "🍑", "english": "Peach", "chinese": "桃子", "phonetic": "[piːtʃ]", "categoryId": "fruits" },
+        { "id": "watermelon", "emoji": "🍉", "english": "Watermelon", "chinese": "西瓜", "phonetic": "[ˈwɔːtəmelən]", "categoryId": "fruits" },
+        { "id": "strawberry", "emoji": "🍓", "english": "Strawberry", "chinese": "草莓", "phonetic": "[ˈstrɔːbəri]", "categoryId": "fruits" },
+        { "id": "cherry", "emoji": "🍒", "english": "Cherry", "chinese": "樱桃", "phonetic": "[ˈtʃeri]", "categoryId": "fruits" },
+        { "id": "lemon", "emoji": "🍋", "english": "Lemon", "chinese": "柠檬", "phonetic": "[ˈlemən]", "categoryId": "fruits" },
+        { "id": "pear", "emoji": "🍐", "english": "Pear", "chinese": "梨", "phonetic": "[peə]", "categoryId": "fruits" },
+        { "id": "mango", "emoji": "🥭", "english": "Mango", "chinese": "芒果", "phonetic": "[ˈmæŋɡəʊ]", "categoryId": "fruits" },
+        { "id": "pineapple", "emoji": "🍍", "english": "Pineapple", "chinese": "菠萝", "phonetic": "[ˈpaɪnæpl]", "categoryId": "fruits" }
       ]
     },
     {
@@ -50,7 +77,10 @@
         { "id": "purple", "emoji": "🟣", "english": "Purple", "chinese": "紫色", "phonetic": "[ˈpɜːpl]", "categoryId": "colors" },
         { "id": "orange-color", "emoji": "🟠", "english": "Orange", "chinese": "橙色", "phonetic": "[ˈɒrɪndʒ]", "categoryId": "colors" },
         { "id": "pink", "emoji": "💗", "english": "Pink", "chinese": "粉色", "phonetic": "[pɪŋk]", "categoryId": "colors" },
-        { "id": "black", "emoji": "⚫", "english": "Black", "chinese": "黑色", "phonetic": "[blæk]", "categoryId": "colors" }
+        { "id": "black", "emoji": "⚫", "english": "Black", "chinese": "黑色", "phonetic": "[blæk]", "categoryId": "colors" },
+        { "id": "white", "emoji": "⚪", "english": "White", "chinese": "白色", "phonetic": "[waɪt]", "categoryId": "colors" },
+        { "id": "grey", "emoji": "🩶", "english": "Grey", "chinese": "灰色", "phonetic": "[ɡreɪ]", "categoryId": "colors" },
+        { "id": "brown", "emoji": "🟤", "english": "Brown", "chinese": "棕色", "phonetic": "[braʊn]", "categoryId": "colors" }
       ]
     },
     {
@@ -60,6 +90,7 @@
       "color": "#DB2777",
       "bgColor": "#FDF2F8",
       "words": [
+        { "id": "zero", "emoji": "0️⃣", "english": "Zero", "chinese": "零", "phonetic": "[ˈzɪərəʊ]", "categoryId": "numbers" },
         { "id": "one", "emoji": "1️⃣", "english": "One", "chinese": "一", "phonetic": "[wʌn]", "categoryId": "numbers" },
         { "id": "two", "emoji": "2️⃣", "english": "Two", "chinese": "二", "phonetic": "[tuː]", "categoryId": "numbers" },
         { "id": "three", "emoji": "3️⃣", "english": "Three", "chinese": "三", "phonetic": "[θriː]", "categoryId": "numbers" },
@@ -84,9 +115,15 @@
         { "id": "chair", "emoji": "🪑", "english": "Chair", "chinese": "椅子", "phonetic": "[tʃeə]", "categoryId": "home" },
         { "id": "door", "emoji": "🚪", "english": "Door", "chinese": "门", "phonetic": "[dɔː]", "categoryId": "home" },
         { "id": "window", "emoji": "🪟", "english": "Window", "chinese": "窗户", "phonetic": "[ˈwɪndəʊ]", "categoryId": "home" },
-        { "id": "table", "emoji": "🪑", "english": "Table", "chinese": "桌子", "phonetic": "[ˈteɪbl]", "categoryId": "home" },
+        { "id": "table", "emoji": "📋", "english": "Table", "chinese": "桌子", "phonetic": "[ˈteɪbl]", "categoryId": "home" },
         { "id": "lamp", "emoji": "💡", "english": "Lamp", "chinese": "灯", "phonetic": "[læmp]", "categoryId": "home" },
-        { "id": "clock", "emoji": "🕐", "english": "Clock", "chinese": "时钟", "phonetic": "[klɒk]", "categoryId": "home" }
+        { "id": "clock", "emoji": "🕐", "english": "Clock", "chinese": "时钟", "phonetic": "[klɒk]", "categoryId": "home" },
+        { "id": "sofa", "emoji": "🛋️", "english": "Sofa", "chinese": "沙发", "phonetic": "[ˈsəʊfə]", "categoryId": "home" },
+        { "id": "tv", "emoji": "📺", "english": "TV", "chinese": "电视", "phonetic": "[ˌtiːˈviː]", "categoryId": "home" },
+        { "id": "fridge", "emoji": "🧊", "english": "Fridge", "chinese": "冰箱", "phonetic": "[frɪdʒ]", "categoryId": "home" },
+        { "id": "phone", "emoji": "📞", "english": "Phone", "chinese": "电话", "phonetic": "[fəʊn]", "categoryId": "home" },
+        { "id": "book", "emoji": "📚", "english": "Book", "chinese": "书", "phonetic": "[bʊk]", "categoryId": "home" },
+        { "id": "cup", "emoji": "🥤", "english": "Cup", "chinese": "杯子", "phonetic": "[kʌp]", "categoryId": "home" }
       ]
     },
     {
@@ -103,7 +140,11 @@
         { "id": "plane", "emoji": "✈️", "english": "Plane", "chinese": "飞机", "phonetic": "[pleɪn]", "categoryId": "transport" },
         { "id": "boat", "emoji": "🚢", "english": "Boat", "chinese": "船", "phonetic": "[bəʊt]", "categoryId": "transport" },
         { "id": "helicopter", "emoji": "🚁", "english": "Helicopter", "chinese": "直升机", "phonetic": "[ˈhelɪkɒptə]", "categoryId": "transport" },
-        { "id": "ship", "emoji": "🛳️", "english": "Ship", "chinese": "轮船", "phonetic": "[ʃɪp]", "categoryId": "transport" }
+        { "id": "ship", "emoji": "🛳️", "english": "Ship", "chinese": "轮船", "phonetic": "[ʃɪp]", "categoryId": "transport" },
+        { "id": "taxi", "emoji": "🚕", "english": "Taxi", "chinese": "出租车", "phonetic": "[ˈtæksi]", "categoryId": "transport" },
+        { "id": "subway", "emoji": "🚇", "english": "Subway", "chinese": "地铁", "phonetic": "[ˈsʌbweɪ]", "categoryId": "transport" },
+        { "id": "truck", "emoji": "🚛", "english": "Truck", "chinese": "卡车", "phonetic": "[trʌk]", "categoryId": "transport" },
+        { "id": "motorcycle", "emoji": "🏍️", "english": "Motorcycle", "chinese": "摩托车", "phonetic": "[ˈməʊtəsaɪkl]", "categoryId": "transport" }
       ]
     },
     {
@@ -137,7 +178,12 @@
         { "id": "mouth", "emoji": "👄", "english": "Mouth", "chinese": "嘴巴", "phonetic": "[maʊθ]", "categoryId": "body" },
         { "id": "hand", "emoji": "🖐️", "english": "Hand", "chinese": "手", "phonetic": "[hænd]", "categoryId": "body" },
         { "id": "foot", "emoji": "🦶", "english": "Foot", "chinese": "脚", "phonetic": "[fʊt]", "categoryId": "body" },
-        { "id": "arm", "emoji": "💪", "english": "Arm", "chinese": "手臂", "phonetic": "[ɑːm]", "categoryId": "body" }
+        { "id": "arm", "emoji": "💪", "english": "Arm", "chinese": "手臂", "phonetic": "[ɑːm]", "categoryId": "body" },
+        { "id": "finger", "emoji": "🤚", "english": "Finger", "chinese": "手指", "phonetic": "[ˈfɪŋɡə]", "categoryId": "body" },
+        { "id": "leg", "emoji": "🦿", "english": "Leg", "chinese": "腿", "phonetic": "[leɡ]", "categoryId": "body" },
+        { "id": "knee", "emoji": "🦵", "english": "Knee", "chinese": "膝盖", "phonetic": "[niː]", "categoryId": "body" },
+        { "id": "tooth", "emoji": "🦷", "english": "Tooth", "chinese": "牙齿", "phonetic": "[tuːθ]", "categoryId": "body" },
+        { "id": "hair", "emoji": "💇", "english": "Hair", "chinese": "头发", "phonetic": "[heə]", "categoryId": "body" }
       ]
     },
     {
@@ -147,14 +193,18 @@
       "color": "#D97706",
       "bgColor": "#FEF3C7",
       "words": [
-        { "id": "shirt", "emoji": "👕", "english": "Shirt", "chinese": "衬衫", "phonetic": "[ʃɜːt]", "categoryId": "clothes" },
+        { "id": "shirt", "emoji": "👔", "english": "Shirt", "chinese": "衬衫", "phonetic": "[ʃɜːt]", "categoryId": "clothes" },
         { "id": "pants", "emoji": "👖", "english": "Pants", "chinese": "裤子", "phonetic": "[pænts]", "categoryId": "clothes" },
         { "id": "dress", "emoji": "👗", "english": "Dress", "chinese": "裙子", "phonetic": "[dres]", "categoryId": "clothes" },
         { "id": "shoe", "emoji": "👟", "english": "Shoe", "chinese": "鞋子", "phonetic": "[ʃuː]", "categoryId": "clothes" },
         { "id": "hat", "emoji": "🎩", "english": "Hat", "chinese": "帽子", "phonetic": "[hæt]", "categoryId": "clothes" },
         { "id": "sock", "emoji": "🧦", "english": "Sock", "chinese": "袜子", "phonetic": "[sɒk]", "categoryId": "clothes" },
         { "id": "glove", "emoji": "🧤", "english": "Glove", "chinese": "手套", "phonetic": "[ɡlʌv]", "categoryId": "clothes" },
-        { "id": "scarf", "emoji": "🧣", "english": "Scarf", "chinese": "围巾", "phonetic": "[skɑːf]", "categoryId": "clothes" }
+        { "id": "scarf", "emoji": "🧣", "english": "Scarf", "chinese": "围巾", "phonetic": "[skɑːf]", "categoryId": "clothes" },
+        { "id": "tshirt", "emoji": "👕", "english": "T-shirt", "chinese": "T恤", "phonetic": "[ˈtiː ʃɜːt]", "categoryId": "clothes" },
+        { "id": "coat", "emoji": "🧥", "english": "Coat", "chinese": "外套", "phonetic": "[kəʊt]", "categoryId": "clothes" },
+        { "id": "glasses", "emoji": "👓", "english": "Glasses", "chinese": "眼镜", "phonetic": "[ˈɡlɑːsɪz]", "categoryId": "clothes" },
+        { "id": "watch", "emoji": "⌚", "english": "Watch", "chinese": "手表", "phonetic": "[wɒtʃ]", "categoryId": "clothes" }
       ]
     },
     {
@@ -171,7 +221,13 @@
         { "id": "star", "emoji": "⭐", "english": "Star", "chinese": "星星", "phonetic": "[stɑː]", "categoryId": "nature" },
         { "id": "cloud", "emoji": "☁️", "english": "Cloud", "chinese": "云", "phonetic": "[klaʊd]", "categoryId": "nature" },
         { "id": "rain", "emoji": "🌧️", "english": "Rain", "chinese": "雨", "phonetic": "[reɪn]", "categoryId": "nature" },
-        { "id": "snow", "emoji": "❄️", "english": "Snow", "chinese": "雪", "phonetic": "[snəʊ]", "categoryId": "nature" }
+        { "id": "snow", "emoji": "❄️", "english": "Snow", "chinese": "雪", "phonetic": "[snəʊ]", "categoryId": "nature" },
+        { "id": "grass", "emoji": "🌿", "english": "Grass", "chinese": "草", "phonetic": "[ɡrɑːs]", "categoryId": "nature" },
+        { "id": "leaf", "emoji": "🍃", "english": "Leaf", "chinese": "叶子", "phonetic": "[liːf]", "categoryId": "nature" },
+        { "id": "mountain", "emoji": "⛰️", "english": "Mountain", "chinese": "山", "phonetic": "[ˈmaʊntɪn]", "categoryId": "nature" },
+        { "id": "river", "emoji": "🏞️", "english": "River", "chinese": "河流", "phonetic": "[ˈrɪvə]", "categoryId": "nature" },
+        { "id": "sea", "emoji": "🌊", "english": "Sea", "chinese": "大海", "phonetic": "[siː]", "categoryId": "nature" },
+        { "id": "wind", "emoji": "💨", "english": "Wind", "chinese": "风", "phonetic": "[wɪnd]", "categoryId": "nature" }
       ]
     }
   ]
