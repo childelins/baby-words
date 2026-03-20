@@ -102,7 +102,112 @@
 
 ---
 
-## 阶段八：待优化项
+## 阶段八：单词扩展与布局优化 ✅ 已完成
+
+### 任务描述
+扩展单词数量并优化分类布局，新增美味水果分类，修改网格布局从 5×2 到 4×3。
+
+### 变更文件
+| 文件 | 操作 | 说明 |
+|------|------|------|
+| `src/data/words.json` | 修改 | 更新所有分类单词数据 |
+| `src/components/CategoryList/CategoryList.tsx` | 修改 | 网格布局 5×2 → 4×3 |
+
+### 任务清单
+- [x] Task 1: 更新单词数据 (words.json)
+  - [x] 1.1 修改动物世界分类（16个单词）
+  - [x] 1.2 修改缤纷色彩分类（新增 white/grey/brown）
+  - [x] 1.3 修改数字王国分类（新增 zero）
+  - [x] 1.4 修改我的家分类（修改 table emoji，新增单词）
+  - [x] 1.5 修改交通工具分类（新增 4 个单词）
+  - [x] 1.6 修改身体部位分类（新增 5 个单词）
+  - [x] 1.7 修改服装配饰分类（修改 shirt emoji，新增单词）
+  - [x] 1.8 修改自然植物分类（新增 6 个单词）
+  - [x] 1.9 新增美味水果分类（12 个单词）
+  - [x] 1.10 修改美味食物分类（移除水果，保留食物）
+- [x] Task 2: 修改分类网格布局
+  - [x] 2.1 更新网格布局从 5×2 到 4×3
+  - [x] 2.2 验证构建
+- [x] Task 3: 验证与提交
+  - [x] 3.1 构建验证
+  - [x] 3.2 功能验证
+  - [x] 3.3 提交变更 (6372f07)
+
+### 变更汇总
+| 指标 | 变更前 | 变更后 |
+|------|--------|--------|
+| 分类数 | 10 | 11 |
+| 单词总数 | ~84 | ~131 |
+| 新增单词 | - | 47 |
+| 网格布局 | 5×2 | 4×3 |
+
+---
+
+## 阶段九：吉祥物与主题系统 ✅ 已完成
+
+### 任务描述
+扩展吉祥物表情系统，实现 4 个可切换角色及配套主题配色。
+
+### 技术方案
+- CSS 变量实现运行时主题切换
+- Fluent UI Emoji SVG 作为表情资源
+- Zustand 管理吉祥物状态
+- localStorage 持久化用户选择
+
+### 文件变更概览
+| 文件 | 操作 | 说明 |
+|------|------|------|
+| `src/types/index.ts` | 修改 | 添加 Mascot 类型定义 |
+| `src/components/Mascot/mascotConfig.ts` | 新建 | 吉祥物配置文件 |
+| `src/hooks/useMascotTheme.ts` | 新建 | 主题切换 Hook |
+| `src/hooks/index.ts` | 修改 | 导出新 Hook |
+| `src/index.css` | 修改 | 添加 CSS 变量主题 |
+| `tailwind.config.js` | 修改 | 添加 mascot 色 |
+| `src/store/useGameStore.ts` | 修改 | 添加吉祥物状态 |
+| `src/components/Mascot/Mascot.tsx` | 重构 | 状态表情 + 主题联动 |
+| `src/components/Mascot/MascotSelector.tsx` | 新建 | 选择器组件 |
+| `src/components/Mascot/index.ts` | 修改 | 更新导出 |
+| `src/pages/HomePage.tsx` | 修改 | 添加 MascotSelector |
+| `src/pages/GamePage.tsx` | 修改 | primary → mascot |
+
+### 任务清单
+- [x] Task 1: 类型定义与配置
+  - [x] 1.1 添加 Mascot 类型定义
+  - [x] 1.2 创建 mascotConfig.ts
+- [x] Task 2: CSS 变量主题系统
+  - [x] 2.1 修改 index.css
+  - [x] 2.2 修改 tailwind.config.js
+- [x] Task 3: 主题切换 Hook
+  - [x] 3.1 创建 useMascotTheme.ts
+  - [x] 3.2 更新 hooks 导出
+- [x] Task 4: Store 状态扩展
+  - [x] 4.1 添加吉祥物状态到 useGameStore.ts
+- [x] Task 5: 重构 Mascot 组件
+  - [x] 5.1 重写 Mascot.tsx
+- [x] Task 6: 创建 MascotSelector 组件
+  - [x] 6.1 创建 MascotSelector.tsx
+- [x] Task 7: 更新导出和集成
+  - [x] 7.1 修改 Mascot/index.ts
+  - [x] 7.2 修改 HomePage.tsx
+- [x] Task 8: 组件主题迁移
+  - [x] 8.1 修改 GamePage.tsx
+- [x] Task 9: 验证与提交
+  - [x] 9.1 构建验证成功 (361.27 KiB)
+  - [x] 9.2 功能验证
+  - [x] 9.3 提交变更 (71e94d8)
+
+### 成果
+| 指标 | 变更前 | 变更后 |
+|------|--------|--------|
+| 吉祥物数量 | 1 | 4 |
+| 表情状态 | 0 | 4 |
+| 主题色 | 固定紫色 | 4 种可选 |
+
+---
+
+## 阶段十：待优化项（暂缓）
+
+> 暂不开发，后续根据需求再启动
 
 - [ ] 响应式适配（平板/手机端）
 - [ ] PWA 图标资源

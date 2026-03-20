@@ -124,9 +124,106 @@
 
 ---
 
+## 2026-03-20 会话（单词扩展与布局优化）
+
+### 任务背景
+扩展单词数量并优化分类布局，新增美味水果分类，修改网格布局从 5×2 到 4×3。
+
+### 已完成任务
+- [x] Task 1: 更新单词数据 (words.json)
+  - [x] 1.1 修改动物世界分类（16个单词，新增 6 个）
+  - [x] 1.2 修改缤纷色彩分类（新增 white/grey/brown）
+  - [x] 1.3 修改数字王国分类（新增 zero）
+  - [x] 1.4 修改我的家分类（修改 table emoji，新增 6 个单词）
+  - [x] 1.5 修改交通工具分类（新增 4 个单词）
+  - [x] 1.6 修改身体部位分类（新增 5 个单词）
+  - [x] 1.7 修改服装配饰分类（修改 shirt emoji，新增 4 个单词）
+  - [x] 1.8 修改自然植物分类（新增 6 个单词）
+  - [x] 1.9 新增美味水果分类（12 个单词）
+  - [x] 1.10 修改美味食物分类（移除水果，保留食物）
+- [x] Task 2: 修改分类网格布局
+  - [x] 2.1 更新网格布局从 5×2 到 4×3
+  - [x] 2.2 验证构建成功
+
+### 文件变更
+
+| 文件 | 变更 |
+|------|------|
+| `src/data/words.json` | 更新所有分类单词数据，新增美味水果分类 |
+| `src/components/CategoryList/CategoryList.tsx` | 网格布局从 5×2 改为 4×3 |
+
+### 变更汇总
+
+| 指标 | 变更前 | 变更后 |
+|------|--------|--------|
+| 分类数 | 10 | 11 |
+| 单词总数 | ~84 | ~131 |
+| 新增单词 | - | 47 |
+| 网格布局 | 5×2 | 4×3 |
+
+### 当前状态
+- 构建成功：357.71 KiB
+- 待提交
+
+---
+
+## 2026-03-20 会话（吉祥物与主题系统）
+
+### 任务背景
+扩展吉祥物表情系统，实现 4 个可切换角色及配套主题配色。
+
+### 已完成任务
+- [x] Task 1: 类型定义与配置
+  - [x] 1.1 添加 Mascot 类型定义到 types/index.ts
+  - [x] 1.2 创建 mascotConfig.ts 配置文件
+- [x] Task 2: CSS 变量主题系统
+  - [x] 2.1 修改 index.css 添加 CSS 变量主题
+  - [x] 2.2 修改 tailwind.config.js 添加 mascot 色
+- [x] Task 3: 主题切换 Hook
+  - [x] 3.1 创建 useMascotTheme.ts
+  - [x] 3.2 更新 hooks/index.ts 导出
+- [x] Task 4: Store 状态扩展
+  - [x] 4.1 添加 mascotState/happyTimer 到 useGameStore.ts
+  - [x] 4.2 修改 playAudio/playAutoSequence/nextWord 等方法
+- [x] Task 5: 重构 Mascot 组件
+  - [x] 5.1 重写 Mascot.tsx 支持状态表情和主题联动
+- [x] Task 6: 创建 MascotSelector 组件
+  - [x] 6.1 创建 MascotSelector.tsx
+- [x] Task 7: 更新导出和集成
+  - [x] 7.1 修改 Mascot/index.ts 导出
+  - [x] 7.2 修改 HomePage.tsx 添加 MascotSelector
+- [x] Task 8: 组件主题迁移
+  - [x] 8.1 修改 GamePage.tsx bg-primary-50 → bg-mascot-50
+- [x] Task 9: 验证与提交
+  - [x] 9.1 构建验证成功 (361.27 KiB)
+  - [x] 9.2 功能验证
+  - [x] 9.3 提交变更 (71e94d8)
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `src/types/index.ts` | 添加 MascotId, MascotState, MascotConfig 类型 |
+| `src/components/Mascot/mascotConfig.ts` | 新建：吉祥物配置文件 |
+| `src/hooks/useMascotTheme.ts` | 新建：主题切换 Hook |
+| `src/hooks/index.ts` | 导出新 Hook |
+| `src/index.css` | 添加 CSS 变量主题系统 |
+| `tailwind.config.js` | 添加 mascot 色配置 |
+| `src/store/useGameStore.ts` | 添加 mascotState/happyTimer 状态 |
+| `src/components/Mascot/Mascot.tsx` | 重构：状态表情 + 主题联动 |
+| `src/components/Mascot/MascotSelector.tsx` | 新建：选择器组件 |
+| `src/components/Mascot/index.ts` | 更新导出 |
+| `src/pages/HomePage.tsx` | 添加 MascotSelector，bg-primary-50 → bg-mascot-50 |
+| `src/pages/GamePage.tsx` | bg-primary-50 → bg-mascot-50 |
+
+### 遇到的错误
+| 错误 | 尝试次数 | 解决方案 |
+|------|---------|---------|
+| TS2322: Type 'object' not assignable to animate | 1 | 导入 TargetAndTransition 和 Transition 类型，修复类型定义 |
+
+---
+
 ## 待办事项
 
 - [ ] 响应式适配测试
 - [ ] 移动端布局优化
 - [ ] PWA 图标资源生成
-- [ ] 动画效果增强

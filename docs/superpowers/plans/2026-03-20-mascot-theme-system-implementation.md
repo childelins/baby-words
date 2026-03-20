@@ -1,6 +1,6 @@
 # 吉祥物与主题系统实现计划
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SKILL: Use  planning-with-files to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 扩展吉祥物表情系统，实现 4 个可切换角色及配套主题配色
 

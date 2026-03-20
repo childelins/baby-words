@@ -1,6 +1,6 @@
 # 单词扩展与布局优化实现计划
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task.
+> **For agentic workers:** REQUIRED SKILL: Use planning-with-files to implement this plan task-by-task.
 
 **Goal:** 扩展单词数量并优化分类布局，新增美味水果分类，修改网格布局
 
