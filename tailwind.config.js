@@ -7,15 +7,26 @@ export default {
   theme: {
     extend: {
       colors: {
+        mascot: {
+          50: 'var(--color-mascot-50)',
+          100: 'var(--color-mascot-100)',
+          200: 'var(--color-mascot-200)',
+          300: 'var(--color-mascot-300)',
+          400: 'var(--color-mascot-400)',
+          500: 'var(--color-mascot-500)',
+          600: 'var(--color-mascot-600)',
+          700: 'var(--color-mascot-700)',
+        },
+        // 保留 primary 作为 mascot 的别名，便于迁移
         primary: {
-          50: '#FEF7FF',
-          100: '#F3E8FF',
-          200: '#E9D5FF',
-          300: '#D8B4FE',
-          400: '#C084FC',
-          500: '#A855F7',
-          600: '#8B5CF6',
-          700: '#7C3AED',
+          50: 'var(--color-mascot-50)',
+          100: 'var(--color-mascot-100)',
+          200: 'var(--color-mascot-200)',
+          300: 'var(--color-mascot-300)',
+          400: 'var(--color-mascot-400)',
+          500: 'var(--color-mascot-500)',
+          600: 'var(--color-mascot-600)',
+          700: 'var(--color-mascot-700)',
         },
         success: '#22C55E',
         warning: '#F97316',

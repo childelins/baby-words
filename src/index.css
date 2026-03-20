@@ -1,5 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
+/* 吉祥物主题变量 */
+:root {
+  --color-mascot-50: #FEF7FF;
+  --color-mascot-100: #F3E8FF;
+  --color-mascot-200: #E9D5FF;
+  --color-mascot-300: #D8B4FE;
+  --color-mascot-400: #C084FC;
+  --color-mascot-500: #A855F7;
+  --color-mascot-600: #8B5CF6;
+  --color-mascot-700: #7C3AED;
+}
+
+[data-mascot="rabbit"] {
+  --color-mascot-50: #FDF2F8;
+  --color-mascot-100: #FCE7F3;
+  --color-mascot-200: #FBCFE8;
+  --color-mascot-300: #F9A8D4;
+  --color-mascot-400: #F472B6;
+  --color-mascot-500: #EC4899;
+  --color-mascot-600: #DB2777;
+  --color-mascot-700: #BE185D;
+}
+
+[data-mascot="bear"] {
+  --color-mascot-50: #EFF6FF;
+  --color-mascot-100: #DBEAFE;
+  --color-mascot-200: #BFDBFE;
+  --color-mascot-300: #93C5FD;
+  --color-mascot-400: #60A5FA;
+  --color-mascot-500: #3B82F6;
+  --color-mascot-600: #2563EB;
+  --color-mascot-700: #1D4ED8;
+}
+
+[data-mascot="duck"] {
+  --color-mascot-50: #FFFBEB;
+  --color-mascot-100: #FEF3C7;
+  --color-mascot-200: #FDE68A;
+  --color-mascot-300: #FCD34D;
+  --color-mascot-400: #FBBF24;
+  --color-mascot-500: #F59E0B;
+  --color-mascot-600: #D97706;
+  --color-mascot-700: #B45309;
+}
+
+/* 主题过渡动画 */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

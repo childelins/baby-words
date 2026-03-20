@@ -18,7 +18,7 @@ export function GamePage() {
   if (!currentCategory) return null;
 
   return (
-    <div className="min-h-screen bg-primary-50 flex flex-col">
+    <div className="min-h-screen bg-mascot-50 flex flex-col">
       {/* 背景装饰 - 匹配设计稿位置 */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-[200px] w-[350px] h-[350px] bg-[#E0D4F7] rounded-full opacity-30" />

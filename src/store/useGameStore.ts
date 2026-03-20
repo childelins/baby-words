@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Category, Progress, PlayLang } from '../types';
+import type { Category, Progress, PlayLang, MascotState } from '../types';
 import { loadProgress, saveProgress, resetProgress as resetStorage } from '../utils/storage';
 import { speak, stopSpeaking } from '../utils/tts';
 import gameData from '../data/words.json';
@@ -25,6 +25,10 @@ interface GameState {
   // 卡片切换方向
   slideDirection: 'left' | 'right' | null;
 
+  // 吉祥物状态
+  mascotState: MascotState;
+  happyTimer: number | null;
+
   // Actions
   selectCategory: (categoryId: string) => void;
   goToHome: () => void;
@@ -36,6 +40,7 @@ interface GameState {
   markWordComplete: () => void;
   resetProgress: () => void;
   closeCompleteModal: () => void;
+  setMascotState: (state: MascotState) => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -47,6 +52,8 @@ export const useGameStore = create<GameState>((set, get) => ({
   progress: loadProgress(),
   showCompleteModal: false,
   slideDirection: null,
+  mascotState: 'idle',
+  happyTimer: null,
 
   selectCategory: (categoryId: string) => {
     const category = get().categories.find((c) => c.id === categoryId);
@@ -62,6 +69,10 @@ export const useGameStore = create<GameState>((set, get) => ({
 
   goToHome: () => {
     stopSpeaking();
+    const { happyTimer } = get();
+    if (happyTimer) {
+      clearTimeout(happyTimer);
+    }
     set({
       currentCategory: null,
       currentWordIndex: 0,
@@ -69,11 +80,13 @@ export const useGameStore = create<GameState>((set, get) => ({
       playingLang: null,
       showCompleteModal: false,
       slideDirection: null,
+      mascotState: 'idle',
+      happyTimer: null,
     });
   },
 
   nextWord: () => {
-    const { currentCategory, currentWordIndex, markWordComplete } = get();
+    const { currentCategory, currentWordIndex, markWordComplete, setMascotState } = get();
     if (!currentCategory) return;
 
     // 标记当前单词完成
@@ -83,6 +96,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       set({ currentWordIndex: currentWordIndex + 1, slideDirection: 'left' });
     } else {
       // 已经是最后一个单词，显示完成弹窗
+      setMascotState('celebrate');
       set({ showCompleteModal: true });
     }
   },
@@ -95,25 +109,28 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   playAudio: async (lang: PlayLang) => {
-    const { currentCategory, currentWordIndex } = get();
+    const { currentCategory, currentWordIndex, setMascotState } = get();
     if (!currentCategory) return;
 
     const word = currentCategory.words[currentWordIndex];
     const text = lang === 'en' ? word.english : word.chinese;
 
     set({ isPlaying: true, playingLang: lang });
+    setMascotState('learning');
     await speak(text, lang);
+    setMascotState('happy');
     set({ isPlaying: false, playingLang: null });
   },
 
   playAutoSequence: async () => {
-    const { currentCategory, currentWordIndex } = get();
+    const { currentCategory, currentWordIndex, setMascotState } = get();
     if (!currentCategory) return;
 
     const word = currentCategory.words[currentWordIndex];
 
     // 播放英文
     set({ isPlaying: true, playingLang: 'en' });
+    setMascotState('learning');
     await speak(word.english, 'en');
 
     // 短暂延迟
@@ -123,6 +140,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     set({ playingLang: 'zh' });
     await speak(word.chinese, 'zh');
 
+    setMascotState('happy');
     set({ isPlaying: false, playingLang: null });
   },
 
@@ -164,6 +182,24 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   closeCompleteModal: () => {
-    set({ showCompleteModal: false });
+    set({ showCompleteModal: false, mascotState: 'idle' });
+  },
+
+  setMascotState: (state: MascotState) => {
+    const { happyTimer } = get();
+    // 清除之前的定时器
+    if (happyTimer) {
+      clearTimeout(happyTimer);
+    }
+
+    // 如果是 happy 状态，1.5 秒后恢复 idle
+    if (state === 'happy') {
+      const timer = window.setTimeout(() => {
+        set({ mascotState: 'idle', happyTimer: null });
+      }, 1500);
+      set({ mascotState: state, happyTimer: timer });
+    } else {
+      set({ mascotState: state, happyTimer: null });
+    }
   },
 }));

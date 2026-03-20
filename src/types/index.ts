@@ -35,3 +35,26 @@ export interface Progress {
 }
 
 export type PlayLang = 'en' | 'zh';
+
+// 吉祥物类型
+export type MascotId = 'cat' | 'rabbit' | 'bear' | 'duck';
+
+// 吉祥物状态
+export type MascotState = 'idle' | 'learning' | 'happy' | 'celebrate';
+
+// 吉祥物配置
+export interface MascotConfig {
+  id: MascotId;
+  name: string;
+  emoji: string;
+  colors: {
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+  };
+}

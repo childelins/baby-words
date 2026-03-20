@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 import { TopBar } from '../components/TopBar';
 import { CategoryList } from '../components/CategoryList';
 import { ProgressBar } from '../components/ProgressBar';
-import { Mascot } from '../components/Mascot';
+import { Mascot, MascotSelector } from '../components/Mascot';
 
 export function HomePage() {
   return (
-    <div className="min-h-screen bg-primary-50 flex flex-col">
+    <div className="min-h-screen bg-mascot-50 flex flex-col">
       {/* 背景装饰 - 匹配设计稿位置 */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-[200px] w-[350px] h-[350px] bg-[#E0D4F7] rounded-full opacity-30" />
@@ -44,6 +44,11 @@ export function HomePage() {
               <CategoryList />
             </motion.div>
           </div>
+        </div>
+
+        {/* 吉祥物选择器 */}
+        <div className="py-2">
+          <MascotSelector />
         </div>
 
         {/* 底部进度条 */}
