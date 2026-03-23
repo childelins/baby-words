@@ -10,6 +10,20 @@
   --color-mascot-500: #A855F7;
   --color-mascot-600: #8B5CF6;
   --color-mascot-700: #7C3AED;
+
+  /* 主题变量 - 日间模式（默认） */
+  --color-bg-page: var(--color-mascot-50);
+  --color-bg-card: #ffffff;
+  --color-bg-container: #ffffff;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-border: var(--color-mascot-200);
+
+  /* 背景装饰 */
+  --color-decoration-1: #E0D4F7;
+  --color-decoration-2: #FBD5E8;
+  --color-decoration-3: #D4F7E0;
 }
 
 [data-mascot="rabbit"] {
@@ -43,6 +57,23 @@
   --color-mascot-500: #F59E0B;
   --color-mascot-600: #D97706;
   --color-mascot-700: #B45309;
+}
+
+/* 夜间模式 */
+[data-theme="dark"] {
+  /* 主题背景色 */
+  --color-bg-page: #0f0f1a;
+  --color-bg-card: #1a1a2e;
+  --color-bg-container: #1a1a2e;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #6b7280;
+  --color-border: #2d3748;
+
+  /* 背景装饰 - 夜间模式暗色 */
+  --color-decoration-1: #2d2d44;
+  --color-decoration-2: #3d2d44;
+  --color-decoration-3: #2d3d44;
 }
 
 /* 主题过渡动画 */
