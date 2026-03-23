@@ -26,7 +26,7 @@ export function CompleteModal() {
           onClick={handleGoHome}
         >
           <motion.div
-            className="bg-white rounded-[40px] p-10 max-w-sm text-center shadow-2xl"
+            className="bg-theme-bg-container rounded-[40px] p-10 max-w-sm text-center shadow-2xl transition-colors"
             initial={{ scale: 0.5, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.5, opacity: 0, y: 50 }}
@@ -51,7 +51,7 @@ export function CompleteModal() {
 
             {/* 标题 - stagger delay 0.1s */}
             <motion.h2
-              className="text-2xl font-bold text-primary-600 mb-2"
+              className="text-2xl font-bold text-mascot-600 mb-2"
               variants={itemVariants}
               initial="hidden"
               animate="visible"
@@ -62,7 +62,7 @@ export function CompleteModal() {
 
             {/* 描述 - stagger delay 0.2s */}
             <motion.p
-              className="text-gray-500 mb-4"
+              className="text-theme-text-secondary mb-4"
               variants={itemVariants}
               initial="hidden"
               animate="visible"
@@ -73,7 +73,7 @@ export function CompleteModal() {
 
             {/* 星星卡片 - stagger delay 0.3s */}
             <motion.div
-              className="bg-primary-50 rounded-2xl p-4 mb-6"
+              className="bg-mascot-50 rounded-2xl p-4 mb-6"
               variants={itemVariants}
               initial="hidden"
               animate="visible"
@@ -88,7 +88,7 @@ export function CompleteModal() {
                 >
                   ⭐
                 </motion.span>
-                <span className="text-xl font-bold text-primary-600">
+                <span className="text-xl font-bold text-mascot-600">
                   总共 {progress.stars} 颗星星
                 </span>
               </div>
@@ -97,7 +97,7 @@ export function CompleteModal() {
             {/* 按钮 - 从下方滑入 */}
             <motion.button
               onClick={handleGoHome}
-              className="w-full bg-primary-600 text-white font-semibold py-4 rounded-2xl"
+              className="w-full bg-mascot-600 text-white font-semibold py-4 rounded-2xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, type: 'spring', damping: 15 }}

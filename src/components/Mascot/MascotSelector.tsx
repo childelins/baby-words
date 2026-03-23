@@ -7,8 +7,8 @@ export function MascotSelector() {
 
   return (
     <div className="w-full max-w-[1120px] mx-auto px-5 mb-4">
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 px-4 py-3">
-        <p className="text-center text-gray-500 text-sm mb-3">选择你的小伙伴</p>
+      <div className="bg-theme-bg-container/80 backdrop-blur-sm rounded-2xl border border-theme-border px-4 py-3 transition-colors">
+        <p className="text-center text-theme-text-secondary text-sm mb-3">选择你的小伙伴</p>
         <div className="flex justify-center gap-4">
           {mascotIds.map((id) => {
             const config = mascots[id];
@@ -21,7 +21,7 @@ export function MascotSelector() {
                 className={`relative flex flex-col items-center gap-1 p-3 rounded-xl transition-all ${
                   isSelected
                     ? 'bg-mascot-50 ring-2 ring-mascot-600'
-                    : 'bg-gray-50 hover:bg-gray-100'
+                    : 'bg-theme-bg-card hover:bg-theme-border'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

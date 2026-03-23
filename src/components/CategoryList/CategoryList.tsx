@@ -21,8 +21,8 @@ export function CategoryList() {
   };
 
   return (
-    <div className="bg-white rounded-[30px] border-2 border-primary-200 p-4 shadow-sm">
-      <h3 className="text-base font-bold text-primary-600 mb-3 text-center">
+    <div className="bg-theme-bg-container rounded-[30px] border-2 border-theme-border p-4 shadow-sm transition-colors">
+      <h3 className="text-base font-bold text-mascot-600 mb-3 text-center">
         选择主题 🎨
       </h3>
 

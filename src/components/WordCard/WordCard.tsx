@@ -60,14 +60,14 @@ export function WordCard() {
       {/* 进度条 */}
       <div className="w-[440px]">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-primary-600 font-bold text-sm">
+          <span className="text-mascot-600 font-bold text-sm">
             {currentCategory.name}
           </span>
-          <span className="text-primary-600 font-bold text-sm">
+          <span className="text-mascot-600 font-bold text-sm">
             {currentNumber} / {totalWords}
           </span>
         </div>
-        <div className="h-2 bg-primary-100 rounded-full overflow-hidden">
+        <div className="h-2 bg-mascot-100 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-primary-500 rounded-full"
             initial={{ width: 0 }}
@@ -93,7 +93,7 @@ export function WordCard() {
             y: 0
           }}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          className="w-[440px] bg-white rounded-[40px] border-[3px] border-primary-200 p-8 shadow-lg"
+          className="w-[440px] bg-theme-bg-container rounded-[40px] border-[3px] border-theme-border p-8 shadow-lg transition-colors"
         >
           <motion.div
             variants={cardContentVariants}
@@ -103,7 +103,7 @@ export function WordCard() {
             {/* 图片区域 */}
             <motion.div
               variants={itemVariants}
-              className="w-[320px] h-[260px] bg-primary-50 rounded-[40px] border-[3px] border-primary-200 mx-auto flex items-center justify-center relative overflow-hidden"
+              className="w-[320px] h-[260px] bg-mascot-50 rounded-[40px] border-[3px] border-mascot-200 mx-auto flex items-center justify-center relative overflow-hidden"
             >
               <motion.span
                 className="text-[120px]"
@@ -123,7 +123,7 @@ export function WordCard() {
             <motion.div variants={itemVariants} className="mt-6 text-center">
               <motion.h2
                 variants={itemVariants}
-                className="text-primary-600 text-[56px] font-extrabold mb-2"
+                className="text-mascot-600 text-[56px] font-extrabold mb-2"
               >
                 {word.english}
               </motion.h2>
