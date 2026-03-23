@@ -18,12 +18,12 @@ export function GamePage() {
   if (!currentCategory) return null;
 
   return (
-    <div className="min-h-screen bg-mascot-50 flex flex-col">
-      {/* 背景装饰 - 匹配设计稿位置 */}
+    <div className="min-h-screen bg-theme-bg flex flex-col">
+      {/* 背景装饰 - 使用主题变量 */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-[200px] w-[350px] h-[350px] bg-[#E0D4F7] rounded-full opacity-30" />
-        <div className="absolute top-[630px] right-[70px] w-[400px] h-[400px] bg-[#FBD5E8] rounded-full opacity-30" />
-        <div className="absolute top-[50px] right-[50px] w-[300px] h-[300px] bg-[#D4F7E0] rounded-full opacity-40" />
+        <div className="absolute top-0 left-[200px] w-[350px] h-[350px] bg-theme-decoration-1 rounded-full opacity-30" />
+        <div className="absolute top-[630px] right-[70px] w-[400px] h-[400px] bg-theme-decoration-2 rounded-full opacity-30" />
+        <div className="absolute top-[50px] right-[50px] w-[300px] h-[300px] bg-theme-decoration-3 rounded-full opacity-40" />
       </div>
 
       {/* 内容 */}
