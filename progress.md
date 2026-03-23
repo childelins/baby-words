@@ -222,6 +222,76 @@
 
 ---
 
+---
+
+## 2026-03-23 会话（夜间模式）
+
+### 任务背景
+为宝宝单词乐园添加夜间切换模式，采用柔和暗色风格，手动按钮切换。
+
+### 设计决策
+- 触发方式：手动切换按钮（TopBar 右侧）
+- 配色风格：柔和暗色（深蓝紫背景）
+- 主题架构：扩展现有 data-mascot 机制，叠加 data-theme 属性
+- 保留吉祥物主题色作为强调色
+
+### 当前进度
+
+#### Phase 1: CSS 变量系统 ✅
+- [x] Task 1.1: 添加日间模式 CSS 变量
+- [x] Task 1.2: 添加夜间模式 CSS 变量
+- [x] Task 1.3: 更新 Tailwind 配置
+- [x] Task 1.4: 验证构建
+- [x] Task 1.5: 提交 (0706910)
+
+#### Phase 2: 主题 Hook ✅
+- [x] Task 2.1: 创建 useTheme.ts
+- [x] Task 2.2: 更新导出
+- [x] Task 2.3: 验证构建
+- [x] Task 2.4: 提交 (259488c)
+
+#### Phase 3: 切换按钮与页面适配 ✅
+- [x] Task 3.1: TopBar 添加切换按钮
+- [x] Task 3.2-3.7: 验证与提交 (c2926da)
+
+#### Phase 4: 组件适配与验证 ✅
+- [x] Task 4.1: 修改 CategoryList 组件
+- [x] Task 4.2: 修改 WordCard 组件
+- [x] Task 4.3: 修改 MascotSelector 组件
+- [x] Task 4.4: 修改 ProgressBar 组件
+- [x] Task 4.5: 修改 CompleteModal 组件
+- [x] Task 4.6: 验证构建
+- [x] Task 4.7: 提交组件适配 (68b5c46)
+- [x] Task 4.8: 质量门槛检查通过
+- [x] Task 4.9: 最终提交
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `src/index.css` | 添加日间/夜间模式 CSS 变量 |
+| `tailwind.config.js` | 添加 theme 色配置 |
+| `src/hooks/useTheme.ts` | 新建：主题切换 Hook |
+| `src/hooks/index.ts` | 导出 useTheme |
+| `src/components/TopBar/TopBar.tsx` | 添加切换按钮，适配主题 |
+| `src/pages/HomePage.tsx` | 背景装饰使用主题变量 |
+| `src/pages/GamePage.tsx` | 背景装饰使用主题变量 |
+| `src/components/CategoryList/CategoryList.tsx` | 容器背景适配主题 |
+| `src/components/WordCard/WordCard.tsx` | 卡片背景适配主题 |
+| `src/components/Mascot/MascotSelector.tsx` | 选择器背景适配主题 |
+| `src/components/ProgressBar/ProgressBar.tsx` | 进度条背景适配主题 |
+| `src/components/CompleteModal/CompleteModal.tsx` | 弹窗背景适配主题 |
+| `docs/superpowers/specs/2026-03-23-dark-mode-design.md` | 新建：设计文档 |
+| `docs/superpowers/plans/2026-03-23-dark-mode-implementation.md` | 新建：实现计划 |
+| `task_plan.md` | 更新：任务计划 |
+| `findings.md` | 更新：发现记录 |
+
+### 质量门槛检查
+- [x] Build verification: `npm run build` passes (370.39 KiB)
+- [x] Spec compliance: 所有组件正确适配夜间模式
+- [x] Code quality: 所有文件行数 < 800 行
+
+---
+
 ## 待办事项
 
 - [ ] 响应式适配测试
