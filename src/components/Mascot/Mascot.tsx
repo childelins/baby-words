@@ -70,7 +70,7 @@ export function Mascot() {
 
       {/* 对话气泡 */}
       <motion.div
-        className="bg-white rounded-2xl border-2 border-mascot-200 px-4 py-3 shadow-sm max-w-[180px]"
+        className="bg-theme-bg-container rounded-2xl border-2 border-theme-border px-4 py-3 shadow-sm max-w-[180px] transition-colors"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         key={getMessage()}
