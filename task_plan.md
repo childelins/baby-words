@@ -107,19 +107,35 @@
 ## 阶段六：快捷键改为纯字母
 
 - **Source**: Plan → docs/superpowers/plans/2026-03-24-keyboard-shortcut-letters-only-implementation.md
-- **Status**: pending
+- **Status**: complete
 - **Description**: 将主题选择快捷键从"数字+字母"改为纯字母映射（QWERTY顺序）
 
 ### Task 6.1: 修改快捷键映射常量
-- **Status**: pending
+- **Status**: complete (281f8e9)
 - **File**: `src/hooks/useKeyboardShortcuts.ts`
 - **变更**: SHORTCUT_KEYS 从 '1234567890QWERTYUIOPASDFGHJKLZXCVBNM' 改为 'QWERTYUIOPASDFGHJKLZXCVBNM'
 
 ### Task 6.2: 验证功能
-- **Status**: pending
+- **Status**: complete (281f8e9)
 - **验证内容**:
-  - 字母键 Q、W、E 等能选择对应分类
-  - 数字键 1-9、0 不再响应
+  - [x] 构建成功 (363.38 KiB)
+  - [x] 字母键 Q、W、E 等能选择对应分类（26个字母支持最多26个分类）
+  - [x] 数字键 1-9、0 不再响应
+
+---
+
+---
+
+## 阶段七：快捷键角标视觉优化
+
+- **Source**: Plan → docs/superpowers/plans/2026-03-24-shortcut-badge-visual-enhancement-implementation.md
+- **Status**: complete
+- **Description**: 将快捷键角标从黑色半透明背景改为使用分类主题色背景，实现视觉融合
+
+### Task 7.1: 修改角标样式
+- **Status**: complete (7396062)
+- **File**: `src/components/CategoryList/CategoryList.tsx`
+- **变更**: 移除 bg-black/20 和 text-white/60，改用内联 style={{ backgroundColor: `${category.color}99` }} 和 text-white
 
 ---
 
