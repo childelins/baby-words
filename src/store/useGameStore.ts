@@ -5,6 +5,15 @@ import { speak, stopSpeaking } from '../utils/tts';
 import gameData from '../data/words.json';
 import { defaultMascot } from '../components/Mascot/mascotConfig';
 
+type Theme = 'light' | 'dark';
+
+const getInitialTheme = (): Theme => {
+  const stored = localStorage.getItem('theme') as Theme | null;
+  if (stored) return stored;
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+  return 'light';
+};
+
 interface GameState {
   // 数据
   categories: Category[];
@@ -31,6 +40,9 @@ interface GameState {
   mascotState: MascotState;
   happyTimer: number | null;
 
+  // 主题
+  theme: Theme;
+
   // Actions
   selectCategory: (categoryId: string) => void;
   goToHome: () => void;
@@ -44,6 +56,8 @@ interface GameState {
   closeCompleteModal: () => void;
   setMascot: (mascot: MascotId) => void;
   setMascotState: (state: MascotState) => void;
+  setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -58,6 +72,11 @@ export const useGameStore = create<GameState>((set, get) => ({
   mascot: defaultMascot,
   mascotState: 'idle',
   happyTimer: null,
+  theme: (() => {
+    const t = getInitialTheme();
+    document.documentElement.setAttribute('data-theme', t);
+    return t;
+  })(),
 
   selectCategory: (categoryId: string) => {
     const category = get().categories.find((c) => c.id === categoryId);
@@ -187,6 +206,17 @@ export const useGameStore = create<GameState>((set, get) => ({
 
   setMascot: (mascot: MascotId) => {
     set({ mascot });
+  },
+
+  setTheme: (theme: Theme) => {
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    set({ theme });
+  },
+
+  toggleTheme: () => {
+    const newTheme = get().theme === 'light' ? 'dark' : 'light';
+    get().setTheme(newTheme);
   },
 
   setMascotState: (state: MascotState) => {
