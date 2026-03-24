@@ -18,7 +18,7 @@ export function GamePage() {
   if (!currentCategory) return null;
 
   return (
-    <div className="min-h-screen bg-theme-bg flex flex-col">
+    <div className="h-screen overflow-hidden bg-theme-bg flex flex-col">
       {/* 背景装饰 - 使用主题变量 */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-[200px] w-[350px] h-[350px] bg-theme-decoration-1 rounded-full opacity-30" />
@@ -27,14 +27,14 @@ export function GamePage() {
       </div>
 
       {/* 内容 */}
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div className="relative z-10 flex flex-col h-full">
         {/* 顶部栏 */}
         <div className="pt-5 pb-4">
           <TopBar />
         </div>
 
         {/* 主内容区 */}
-        <div className="flex-1 flex items-start justify-center px-5 py-4 gap-6">
+        <div className="flex-1 min-h-0 overflow-auto flex items-start justify-center px-5 py-4 gap-6">
           {/* 左侧吉祥物 */}
           <motion.div
             className="hidden xl:block"

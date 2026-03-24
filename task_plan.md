@@ -81,3 +81,28 @@
 | 2026-03-23 | 扩展现有 data-mascot 机制 | 保持吉祥物主题色一致性 |
 | 2026-03-23 | 手动切换按钮 | 用户主动控制 |
 | 2026-03-23 | 柔和暗色风格 | 适合幼儿使用 |
+
+---
+
+## 阶段五：键盘快捷键修复与角标优化
+
+- **Source**: Plan → docs/superpowers/plans/2026-03-24-keyboard-shortcut-fix-implementation.md
+- **Status**: complete
+- **Description**: 修复数字键快捷键不生效问题，优化角标样式使其更小更淡
+
+### Task 5.1: 修复数字键快捷键检测
+- **Status**: complete (4fbf0e3)
+- **File**: `src/hooks/useKeyboardShortcuts.ts`
+- **变更**: 使用 e.code 检测按键替代 e.key，同时支持主键盘和小键盘数字键
+
+### Task 5.2: 优化角标样式
+- **Status**: complete (2551cbb)
+- **File**: `src/components/CategoryList/CategoryList.tsx`
+- **变更**: 字体从 10px 缩小到 8px，透明度降低
+
+---
+
+## 遇到的错误
+
+| 错误 | 尝试次数 | 解决方案 |
+|------|---------|---------|

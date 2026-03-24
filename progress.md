@@ -297,3 +297,35 @@
 - [ ] 响应式适配测试
 - [ ] 移动端布局优化
 - [ ] PWA 图标资源生成
+
+---
+
+## 2026-03-24 会话（键盘快捷键修复与角标优化）
+
+### 任务背景
+修复数字键快捷键不生效问题，优化角标样式使其更小更淡。
+
+### 已完成任务
+
+#### Task 5.1: 修复数字键快捷键检测
+- [x] 修改 `useKeyboardShortcuts.ts`，使用 e.code 替代 e.key 检测物理按键位置
+- [x] 同时支持主键盘 Digit1-Digit0 和小键盘 Numpad1-Numpad0
+- [x] 验证构建成功 (369.84 KiB)
+- [x] 提交 (4fbf0e3)
+
+#### Task 5.2: 优化角标样式
+- [x] 修改 `CategoryList.tsx`，角标字体从 10px 缩小到 8px
+- [x] 文字透明度降至 60%，背景透明度降至 20%
+- [x] 验证构建成功 (369.89 KiB)
+- [x] 提交 (2551cbb)
+
+### 文件变更
+| 文件 | 变更 |
+|------|------|
+| `src/hooks/useKeyboardShortcuts.ts` | 使用 e.code 检测按键 |
+| `src/components/CategoryList/CategoryList.tsx` | 优化角标样式 |
+
+### 技术说明
+- 使用 `e.code` 属性检测物理按键位置，解决不同键盘布局下数字键不生效的问题
+- `Digit1`-`Digit0` 检测主键盘数字键，`Numpad1`-`Numpad9` 检测小键盘数字键
+- 字母键使用 `KeyQ`, `KeyW` 等格式检测

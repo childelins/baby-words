@@ -10,12 +10,12 @@ export function NavButtons() {
   const isLastWord = currentWordIndex === currentCategory.words.length - 1;
 
   return (
-    <div className="flex items-center justify-center gap-6">
+    <div className="flex items-center justify-center gap-3">
       {/* 上一个按钮 */}
       <motion.button
         onClick={prevWord}
         disabled={isFirstWord}
-        className={`w-[100px] h-[120px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md transition-colors ${
+        className={`px-5 py-2.5 rounded-xl flex flex-col items-center gap-0.5 shadow-sm transition-colors ${
           isFirstWord
             ? 'bg-theme-bg-card opacity-50 cursor-not-allowed'
             : 'bg-theme-bg-card hover:bg-mascot-100'
@@ -23,37 +23,36 @@ export function NavButtons() {
         whileHover={!isFirstWord ? { scale: 1.05 } : {}}
         whileTap={!isFirstWord ? { scale: 0.95 } : {}}
       >
-        <span className="text-4xl">⬅️</span>
         <span className="text-theme-text-secondary font-semibold text-sm">上一个</span>
-        <span className="text-theme-text-muted font-medium text-xs">←</span>
+        <span className="text-theme-text-muted text-xs">←</span>
       </motion.button>
 
       {/* 主页按钮 */}
       <motion.button
         onClick={goToHome}
-        className="w-[120px] h-[120px] bg-mascot-600 rounded-3xl flex flex-col items-center justify-center gap-1 shadow-lg"
+        className="px-5 py-2.5 rounded-xl flex flex-col items-center gap-0.5 shadow-sm transition-colors bg-mascot-100 hover:bg-mascot-200"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="text-4xl">🏠</span>
-        <span className="text-white font-semibold text-sm">主页</span>
-        <span className="text-white/80 font-medium text-xs">Esc</span>
+        <span className="text-theme-text-secondary font-semibold text-sm">主页</span>
+        <span className="text-theme-text-muted text-xs">Esc</span>
       </motion.button>
 
       {/* 下一个按钮 */}
       <motion.button
         onClick={nextWord}
-        className={`w-[100px] h-[120px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md ${
-          isLastWord ? 'bg-mascot-500' : 'bg-success'
+        className={`px-5 py-2.5 rounded-xl flex flex-col items-center gap-0.5 shadow-sm transition-colors ${
+          isLastWord
+            ? 'bg-mascot-100 hover:bg-mascot-200'
+            : 'bg-theme-bg-card hover:bg-mascot-100'
         }`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="text-4xl">{isLastWord ? '🎉' : '➡️'}</span>
-        <span className="text-white font-semibold text-sm">
+        <span className="text-theme-text-secondary font-semibold text-sm">
           {isLastWord ? '完成' : '下一个'}
         </span>
-        <span className="text-white/80 font-medium text-xs">→</span>
+        <span className="text-theme-text-muted text-xs">→</span>
       </motion.button>
     </div>
   );

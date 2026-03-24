@@ -7,8 +7,8 @@
       "color": "#16A34A",
       "bgColor": "#F0FDF4",
       "words": [
-        { "id": "cat", "emoji": "🐱", "english": "Cat", "chinese": "猫咪", "phonetic": "[kæt]", "categoryId": "animals" },
-        { "id": "dog", "emoji": "🐕", "english": "Dog", "chinese": "狗狗", "phonetic": "[dɒɡ]", "categoryId": "animals" },
+        { "id": "cat", "emoji": "🐱", "english": "Cat", "chinese": "小猫", "phonetic": "[kæt]", "categoryId": "animals" },
+        { "id": "dog", "emoji": "🐕", "english": "Dog", "chinese": "小狗", "phonetic": "[dɒɡ]", "categoryId": "animals" },
         { "id": "bird", "emoji": "🐦", "english": "Bird", "chinese": "小鸟", "phonetic": "[bɜːd]", "categoryId": "animals" },
         { "id": "fish", "emoji": "🐟", "english": "Fish", "chinese": "鱼", "phonetic": "[fɪʃ]", "categoryId": "animals" },
         { "id": "rabbit", "emoji": "🐰", "english": "Rabbit", "chinese": "兔子", "phonetic": "[ˈræbɪt]", "categoryId": "animals" },
