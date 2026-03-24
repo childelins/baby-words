@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
 import { useRipple } from '../../hooks';
+import { SHORTCUT_KEYS } from '../../hooks/useKeyboardShortcuts';
 
 export function CategoryList() {
   const { categories, currentCategory, selectCategory, progress } = useGameStore();
@@ -31,6 +32,7 @@ export function CategoryList() {
         {categories.map((category, index) => {
           const isActive = currentCategory?.id === category.id;
           const { completed, total, percentage } = getCategoryProgress(category.id);
+          const shortcutKey = index < SHORTCUT_KEYS.length ? SHORTCUT_KEYS[index] : null;
 
           return (
             <motion.button
@@ -65,6 +67,13 @@ export function CategoryList() {
                 />
               ))}
 
+              {/* 快捷键角标 - 右上角 */}
+              {shortcutKey && (
+                <span className="absolute top-1 right-1 text-[10px] font-bold text-white bg-black/40 px-1.5 py-0.5 rounded">
+                  {shortcutKey}
+                </span>
+              )}
+
               <span className="text-2xl">{category.icon}</span>
               <p className="font-bold text-[11px]" style={{ color: category.color }}>
                 {category.name}
@@ -83,9 +92,9 @@ export function CategoryList() {
                 </div>
               )}
 
-              {/* 进度数字（完成时显示星星） */}
+              {/* 进度数字（完成时显示星星） - 左上角 */}
               {completed === total && total > 0 && (
-                <span className="absolute top-1 right-1 text-xs">⭐</span>
+                <span className="absolute top-1 left-1 text-xs">⭐</span>
               )}
             </motion.button>
           );
