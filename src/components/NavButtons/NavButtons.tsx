@@ -44,7 +44,7 @@ export function NavButtons() {
       <motion.button
         onClick={nextWord}
         className={`w-[100px] h-[120px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md ${
-          isLastWord ? 'bg-pink-500' : 'bg-success'
+          isLastWord ? 'bg-mascot-500' : 'bg-success'
         }`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}

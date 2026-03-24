@@ -16,7 +16,7 @@ export function ProgressBar() {
 
         <div className="flex-1 h-3 bg-mascot-100 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-primary-600 rounded-full"
+            className="h-full bg-mascot-600 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
             transition={{ duration: 0.5, ease: 'easeOut' }}

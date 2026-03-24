@@ -28,7 +28,7 @@ export function MascotSelector() {
               >
                 <span className="text-3xl">{config.emoji}</span>
                 <span className={`text-xs font-medium ${
-                  isSelected ? 'text-mascot-600' : 'text-gray-500'
+                  isSelected ? 'text-mascot-600' : 'text-theme-text-secondary'
                 }`}>
                   {config.name}
                 </span>
