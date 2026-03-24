@@ -69,7 +69,7 @@ export function WordCard() {
         </div>
         <div className="h-2 bg-mascot-100 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-primary-500 rounded-full"
+            className="h-full bg-mascot-500 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progressPercentage}%` }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -129,13 +129,13 @@ export function WordCard() {
               </motion.h2>
               <motion.p
                 variants={itemVariants}
-                className="text-gray-500 text-[28px] font-semibold mb-1"
+                className="text-theme-text-secondary text-[28px] font-semibold mb-1"
               >
                 {word.chinese}
               </motion.p>
               <motion.p
                 variants={itemVariants}
-                className="text-gray-400 text-base"
+                className="text-theme-text-muted text-base"
               >
                 {word.phonetic}
               </motion.p>
@@ -148,7 +148,7 @@ export function WordCard() {
       <div className="flex items-center gap-3">
         <motion.div
           className={`flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors ${
-            isPlayingEn ? 'bg-primary-600' : 'bg-primary-100'
+            isPlayingEn ? 'bg-mascot-600' : 'bg-mascot-100'
           }`}
           animate={isPlayingEn ? { scale: [1, 1.05, 1] } : {}}
           transition={{
@@ -159,20 +159,20 @@ export function WordCard() {
         >
           <SoundWave
             isActive={isPlayingEn}
-            color={isPlayingEn ? 'bg-white' : 'bg-primary-600'}
+            color={isPlayingEn ? 'bg-white' : 'bg-mascot-600'}
           />
           <span className={`text-sm font-semibold ${
-            isPlayingEn ? 'text-white' : 'text-primary-600'
+            isPlayingEn ? 'text-white' : 'text-mascot-600'
           }`}>
             English
           </span>
         </motion.div>
 
-        <span className="text-primary-600 text-lg">→</span>
+        <span className="text-mascot-600 text-lg">→</span>
 
         <motion.div
           className={`flex items-center gap-2 px-5 py-2.5 rounded-full transition-colors ${
-            isPlayingZh ? 'bg-pink-500' : 'bg-pink-100'
+            isPlayingZh ? 'bg-mascot-600' : 'bg-mascot-100'
           }`}
           animate={isPlayingZh ? { scale: [1, 1.05, 1] } : {}}
           transition={{
@@ -183,10 +183,10 @@ export function WordCard() {
         >
           <SoundWave
             isActive={isPlayingZh}
-            color={isPlayingZh ? 'bg-white' : 'bg-pink-600'}
+            color={isPlayingZh ? 'bg-white' : 'bg-mascot-600'}
           />
           <span className={`text-sm font-semibold ${
-            isPlayingZh ? 'text-white' : 'text-pink-600'
+            isPlayingZh ? 'text-white' : 'text-mascot-600'
           }`}>
             中文
           </span>
@@ -195,10 +195,10 @@ export function WordCard() {
 
       {/* Space 键提示 */}
       <div className="flex items-center gap-2">
-        <div className="w-20 h-8 bg-gray-100 rounded-lg border border-gray-300 flex items-center justify-center">
-          <span className="text-gray-600 font-semibold text-xs">Space</span>
+        <div className="w-20 h-8 bg-theme-bg-card rounded-lg border border-theme-border flex items-center justify-center transition-colors">
+          <span className="text-theme-text-secondary font-semibold text-xs">Space</span>
         </div>
-        <span className="text-gray-400 font-medium text-sm">重复播放发音</span>
+        <span className="text-theme-text-muted font-medium text-sm">重复播放发音</span>
       </div>
     </div>
   );
