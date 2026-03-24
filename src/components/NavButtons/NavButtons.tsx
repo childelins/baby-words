@@ -15,23 +15,23 @@ export function NavButtons() {
       <motion.button
         onClick={prevWord}
         disabled={isFirstWord}
-        className={`w-[100px] h-[120px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md ${
+        className={`w-[100px] h-[120px] rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md transition-colors ${
           isFirstWord
-            ? 'bg-gray-100 opacity-50 cursor-not-allowed'
-            : 'bg-gray-100 hover:bg-gray-200'
+            ? 'bg-theme-bg-card opacity-50 cursor-not-allowed'
+            : 'bg-theme-bg-card hover:bg-mascot-100'
         }`}
         whileHover={!isFirstWord ? { scale: 1.05 } : {}}
         whileTap={!isFirstWord ? { scale: 0.95 } : {}}
       >
         <span className="text-4xl">⬅️</span>
-        <span className="text-gray-500 font-semibold text-sm">上一个</span>
-        <span className="text-gray-400 font-medium text-xs">←</span>
+        <span className="text-theme-text-secondary font-semibold text-sm">上一个</span>
+        <span className="text-theme-text-muted font-medium text-xs">←</span>
       </motion.button>
 
       {/* 主页按钮 */}
       <motion.button
         onClick={goToHome}
-        className="w-[120px] h-[120px] bg-primary-600 rounded-3xl flex flex-col items-center justify-center gap-1 shadow-lg"
+        className="w-[120px] h-[120px] bg-mascot-600 rounded-3xl flex flex-col items-center justify-center gap-1 shadow-lg"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
