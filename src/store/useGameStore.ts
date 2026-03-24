@@ -1,8 +1,9 @@
 import { create } from 'zustand';
-import type { Category, Progress, PlayLang, MascotState } from '../types';
+import type { Category, Progress, PlayLang, MascotState, MascotId } from '../types';
 import { loadProgress, saveProgress, resetProgress as resetStorage } from '../utils/storage';
 import { speak, stopSpeaking } from '../utils/tts';
 import gameData from '../data/words.json';
+import { defaultMascot } from '../components/Mascot/mascotConfig';
 
 interface GameState {
   // 数据
@@ -25,7 +26,8 @@ interface GameState {
   // 卡片切换方向
   slideDirection: 'left' | 'right' | null;
 
-  // 吉祥物状态
+  // 吉祥物
+  mascot: MascotId;
   mascotState: MascotState;
   happyTimer: number | null;
 
@@ -40,6 +42,7 @@ interface GameState {
   markWordComplete: () => void;
   resetProgress: () => void;
   closeCompleteModal: () => void;
+  setMascot: (mascot: MascotId) => void;
   setMascotState: (state: MascotState) => void;
 }
 
@@ -52,6 +55,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   progress: loadProgress(),
   showCompleteModal: false,
   slideDirection: null,
+  mascot: defaultMascot,
   mascotState: 'idle',
   happyTimer: null,
 
@@ -109,28 +113,25 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   playAudio: async (lang: PlayLang) => {
-    const { currentCategory, currentWordIndex, setMascotState } = get();
+    const { currentCategory, currentWordIndex } = get();
     if (!currentCategory) return;
 
     const word = currentCategory.words[currentWordIndex];
     const text = lang === 'en' ? word.english : word.chinese;
 
     set({ isPlaying: true, playingLang: lang });
-    setMascotState('learning');
     await speak(text, lang);
-    setMascotState('happy');
     set({ isPlaying: false, playingLang: null });
   },
 
   playAutoSequence: async () => {
-    const { currentCategory, currentWordIndex, setMascotState } = get();
+    const { currentCategory, currentWordIndex } = get();
     if (!currentCategory) return;
 
     const word = currentCategory.words[currentWordIndex];
 
     // 播放英文
     set({ isPlaying: true, playingLang: 'en' });
-    setMascotState('learning');
     await speak(word.english, 'en');
 
     // 短暂延迟
@@ -140,7 +141,6 @@ export const useGameStore = create<GameState>((set, get) => ({
     set({ playingLang: 'zh' });
     await speak(word.chinese, 'zh');
 
-    setMascotState('happy');
     set({ isPlaying: false, playingLang: null });
   },
 
@@ -183,6 +183,10 @@ export const useGameStore = create<GameState>((set, get) => ({
 
   closeCompleteModal: () => {
     set({ showCompleteModal: false, mascotState: 'idle' });
+  },
+
+  setMascot: (mascot: MascotId) => {
+    set({ mascot });
   },
 
   setMascotState: (state: MascotState) => {

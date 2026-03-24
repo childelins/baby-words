@@ -1,25 +1,15 @@
-import { motion, AnimatePresence, type TargetAndTransition, type Transition } from 'framer-motion';
+import { motion, type TargetAndTransition, type Transition } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
-import { useMascotTheme } from '../../hooks/useMascotTheme';
-import { mascots, stateEmojis, getRandomMessage } from './mascotConfig';
+import { mascots, getRandomMessage } from './mascotConfig';
 import type { MascotState } from '../../types';
 
-// 表情切换动画变体
-const emojiVariants = {
-  initial: { scale: 0.8, opacity: 0 },
-  animate: { scale: 1, opacity: 1 },
-  exit: { scale: 0.8, opacity: 0 },
-};
-
-// 状态动画配置
+// 状态动画配置 - 只在非学习状态下播放动画
 const stateAnimations: Record<MascotState, TargetAndTransition> = {
   idle: {
     scale: [1, 1.02, 1],
     y: [0, -2, 0],
   },
-  learning: {
-    rotate: [0, -5, 5, -5, 5, 0],
-  },
+  learning: {}, // 学习时不动
   happy: {
     scale: [1, 1.1, 1],
   },
@@ -36,10 +26,7 @@ const stateTransitions: Record<MascotState, Transition> = {
     repeat: Infinity,
     ease: 'easeInOut',
   },
-  learning: {
-    duration: 0.5,
-    repeat: Infinity,
-  },
+  learning: {}, // 学习时不播放动画
   happy: {
     duration: 0.3,
     repeat: 0,
@@ -51,17 +38,14 @@ const stateTransitions: Record<MascotState, Transition> = {
 };
 
 export function Mascot() {
-  const { mascotState, isPlaying, playingLang, progress } = useGameStore();
-  const { mascot } = useMascotTheme();
+  const { mascotState, progress, mascot } = useGameStore();
 
   const config = mascots[mascot];
-  const emoji = stateEmojis[mascotState][mascot];
+  // 始终使用 idle 状态的表情，不随学习状态变化
+  const emoji = config.emoji;
 
   // 获取对话消息
   const getMessage = (): string => {
-    if (mascotState === 'learning' && isPlaying) {
-      return playingLang === 'en' ? '正在播放英文~' : '正在播放中文~';
-    }
     if (mascotState === 'celebrate') {
       return '全部学完啦！🎉';
     }
@@ -79,19 +63,9 @@ export function Mascot() {
         animate={stateAnimations[mascotState]}
         transition={stateTransitions[mascotState]}
       >
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={`${mascot}-${mascotState}`}
-            className="text-8xl"
-            variants={emojiVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: 0.2 }}
-          >
-            {emoji}
-          </motion.span>
-        </AnimatePresence>
+        <span className="text-8xl">
+          {emoji}
+        </span>
       </motion.div>
 
       {/* 对话气泡 */}
