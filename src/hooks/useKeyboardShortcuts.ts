@@ -29,7 +29,24 @@ export function useKeyboardShortcuts() {
     const shortcutMap = getShortcutMap();
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      const key = e.key.toUpperCase();
+      let key = '';
+
+      // 处理数字键（主键盘 Digit1-Digit0）
+      if (e.code.startsWith('Digit')) {
+        key = e.code.replace('Digit', '');
+      }
+      // 处理数字键（小键盘 Numpad1-Numpad0，排除小数点）
+      else if (e.code.startsWith('Numpad') && e.code !== 'NumpadDecimal') {
+        key = e.code.replace('Numpad', '');
+      }
+      // 处理字母键（KeyQ, KeyW, etc.）
+      else if (e.code.startsWith('Key')) {
+        key = e.code.replace('Key', '');
+      }
+      // 其他按键使用 key 属性
+      else {
+        key = e.key.toUpperCase();
+      }
 
       // 检查是否是快捷键
       const categoryId = shortcutMap[key];
