@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../../store/useGameStore';
-import { useTheme } from '../../hooks';
 
 export function TopBar() {
   const { progress } = useGameStore();
-  const { theme, toggleTheme } = useTheme();
+  const theme = useGameStore((s) => s.theme);
+  const toggleTheme = useGameStore((s) => s.toggleTheme);
 
   return (
     <div className="w-full max-w-[1120px] mx-auto px-5">
