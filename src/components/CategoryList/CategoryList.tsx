@@ -67,9 +67,12 @@ export function CategoryList() {
                 />
               ))}
 
-              {/* 快捷键角标 - 右上角，缩小变淡 */}
+              {/* 快捷键角标 - 右上角，使用分类主题色 */}
               {shortcutKey && (
-                <span className="absolute top-0.5 right-0.5 text-[8px] font-medium text-white/60 bg-black/20 px-1 py-0.5 rounded">
+                <span
+                  className="absolute top-0.5 right-0.5 text-[8px] font-medium text-white px-1 py-0.5 rounded"
+                  style={{ backgroundColor: `${category.color}99` }}
+                >
                   {shortcutKey}
                 </span>
               )}
