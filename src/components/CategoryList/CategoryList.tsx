@@ -67,9 +67,9 @@ export function CategoryList() {
                 />
               ))}
 
-              {/* 快捷键角标 - 右上角 */}
+              {/* 快捷键角标 - 右上角，缩小变淡 */}
               {shortcutKey && (
-                <span className="absolute top-1 right-1 text-[10px] font-bold text-white bg-black/40 px-1.5 py-0.5 rounded">
+                <span className="absolute top-0.5 right-0.5 text-[8px] font-medium text-white/60 bg-black/20 px-1 py-0.5 rounded">
                   {shortcutKey}
                 </span>
               )}
